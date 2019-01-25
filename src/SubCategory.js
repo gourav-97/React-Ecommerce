@@ -1,6 +1,8 @@
 import React,{Component} from  'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import './SubCategory.css';
+import { Container, Row, Col } from 'reactstrap';
 
 class SubCategory extends Component{
     state={
@@ -14,8 +16,9 @@ class SubCategory extends Component{
         // let catid = this.props.match.params.categoryId;
         // console.log(id)
         axios.get('/categories/'+id)
+
         .then(res=>{
-            console.log(res);
+            // console.log(res);
                 let name = this.props.location.state.categoryName;
                 this.setState({
                     SubCategories: res.data,
@@ -34,11 +37,12 @@ class SubCategory extends Component{
                 return (
                     <div className="subcategory card" key={subcategory.categoryId}>
                         <Link to={'/subcat/'+this.props.match.params.categoryId+'/'+subcategory.categoryId}>
-                        <div className="card-content">
-                            <span className="card-name">{subcategory.categoryName}</span> 
-                            <p>{subcategory.desc}</p>
-                        </div>
-                    </Link>
+                            <div className="card-content">
+                                <span className="card-name">{subcategory.categoryName}</span> 
+                                <p>{subcategory.desc}</p>
+                                <img className="card-image" src={subcategory.picURL} alt=""/>
+                            </div>
+                        </Link>
                     </div>
                 )
             })

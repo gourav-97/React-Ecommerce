@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
+import './Category.css'
 class Category extends Component{
     state={
         categories:{ }
@@ -11,7 +11,7 @@ class Category extends Component{
     componentDidMount(){
         axios.get('/categories')
             .then(res =>{
-                console.log(res);
+                // console.log(res);
                 this.setState({
                     categories:res.data
                 })
@@ -20,7 +20,7 @@ class Category extends Component{
 
     render(){
     const {categories}=this.state;
-    console.log(categories)
+    // console.log(categories)
     const categoriesList = categories.length ?(
             categories.map(category =>{
                 return(
@@ -30,6 +30,7 @@ class Category extends Component{
                             <span className="card-name">Category Name: {category.categoryName}</span>
                             <p>Description: {category.desc}</p>
                         </div>
+                        <img className="card-image" src={category.picURL} alt=""/>
                         </Link>
                     </div>
                 )

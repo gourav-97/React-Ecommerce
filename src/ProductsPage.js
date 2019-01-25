@@ -1,7 +1,8 @@
+import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Product extends Component {
+class ProductsPage extends Component {
     state = {
         CategoryName: "",
         Products: [],
@@ -46,7 +47,7 @@ class Product extends Component {
         axios.get('http://localhost:8080/categories/' + catid + "/" + subcatid)
             .then(res => {
                 console.log(res.data);
-                if(res.data.statusCode==200){
+                if(res.data.statusCode===200){
                     this.setState({
                         Products: res.data.responseData,
                         CategoryName: name
@@ -71,7 +72,8 @@ class Product extends Component {
                    features.push(products1[key])
                 return (
                     <div className="products row" key={index}>
-                        <hr/>
+                    <hr/>
+                    <Link to ={'/product/'+product.productId}>
                         <div className="collection-item col s3">Name:</div>
                         <div className="collection-item col s3">{product.productName}</div>
                         <div className="collection-item col s3">Brand:</div>
@@ -81,15 +83,8 @@ class Product extends Component {
                         <div className="collection-item col s3">Product Description:</div>
                         <div className="collection-item col s3">{features.map(item=>{return item})}</div>
                         <div>
-                            <button className="waves-effect waves-light btn-small">
-                                <i className="material-icons">add_shopping_cart</i>
-                            </button>
-                            &nbsp;
-                            <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
-                                <i className="material-icons">book</i>
-                                Buy Now</button>
-                            &nbsp;
                         </div>
+                        </Link>
                     </div>
                 )
             })
@@ -105,4 +100,4 @@ class Product extends Component {
         )
     }
 }
-export default Product;
+export default ProductsPage;

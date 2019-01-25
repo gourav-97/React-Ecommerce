@@ -7,14 +7,13 @@ class SubCategory extends Component{
         CategoryName:"",
         SubCategories:{},
         ready:false
-
     }
     componentDidMount(){
         const id = this.props.match.params.categoryId;
         axios.get('http://localhost:8080/categories/'+id)
         .then(res=>{
             console.log(res.data)
-            if(res.data.statusCode==200){
+            if(res.data.statusCode===200){
                 let name = this.props.location.state.categoryName;
                 this.setState({
                     SubCategories: res.data.responseData,

@@ -4,7 +4,8 @@ import Contact from './Contact';
 import About from './About';
 import Category from './Category';
 import SubCategory from './SubCategory';
-import Products from './Products';
+import ProductsPage from './ProductsPage';
+import Product from './Product';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -14,14 +15,15 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
         {/* <Header/> */}
-          <Route path="/" component={Header}/>
-          <Route path='/category' component={Category}/>
-          <Route path='/about' component ={About}/>
-          <Route path='/contact' component={Contact}/>
-          <Route path='/cat/:categoryId' component={SubCategory}/>
-          <Route path='/subcat/:categoryId/:subcategoryId' component={Products}/> 
-      <Footer/>
-        </div>
+        <Header/>
+          <Route exact path='/category' component={Category}/>
+          <Route exact path='/about' component ={About}/>
+          <Route exact path='/contact' component={Contact}/>
+          <Route exact path='/cat/:categoryId' component={SubCategory}/>
+          <Route exact path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/> 
+          <Route exact path='/product/:productId' component={Product}/> 
+        <Footer/>
+      </div>
       </BrowserRouter>
     );
   }

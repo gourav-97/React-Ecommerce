@@ -12,7 +12,7 @@ class Category extends Component{
         axios.get('http://localhost:8080/categories')
             .then(res =>{
                 console.log(res);
-                if((res.data.statusCode)==200){
+                if((res.data.statusCode)===200){
                     this.setState({
                         categories:res.data.responseData
                     })    

@@ -1,8 +1,6 @@
 import React,{Component} from  'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import './SubCategory.css';
-import { Container, Row, Col } from 'reactstrap';
 
 class SubCategory extends Component{
     state={
@@ -13,22 +11,25 @@ class SubCategory extends Component{
     }
     componentDidMount(){
         const id = this.props.match.params.categoryId;
-        // let catid = this.props.match.params.categoryId;
-        // console.log(id)
-        axios.get('/categories/'+id)
-
+        axios.get('http://localhost:8080/categories/'+id)
         .then(res=>{
-            // console.log(res);
+            console.log(res.data)
+            if(res.data.statusCode==200){
                 let name = this.props.location.state.categoryName;
                 this.setState({
-                    SubCategories: res.data,
+                    SubCategories: res.data.responseData,
                     categoryId:id,
                     CategoryName:name
                 })
-            })
+            }
+            else{
+                alert(res.data.message);
+            }
+         })
         .catch(error=>{
-            if(error.response)
-                console.log(error.response);
+            console.log(error.response)
+            // if(error.response)
+            //     console.log(error.response);
         })
     }
     render(){

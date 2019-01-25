@@ -1,26 +1,31 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import './Category.css'
+import './Category.css';
 class Category extends Component{
     state={
-        categories:{ }
-
+        categories:{ },
+        statusCode:null
     }
 
     componentDidMount(){
-        axios.get('/categories')
+        axios.get('http://localhost:8080/categories')
             .then(res =>{
-                // console.log(res);
-                this.setState({
-                    categories:res.data
-                })
+                console.log(res);
+                if((res.data.statusCode)==200){
+                    this.setState({
+                        categories:res.data.responseData
+                    })    
+                }
+                else{
+                    alert(res.data.message);
+                }
             })
     }
 
     render(){
     const {categories}=this.state;
-    // console.log(categories)
+    console.log(categories)
     const categoriesList = categories.length ?(
             categories.map(category =>{
                 return(

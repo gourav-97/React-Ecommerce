@@ -6,9 +6,9 @@ const Header=()=>{
         <nav className="nav-wrapper blue darken-3">
             <div className="container">
                 {/* <ul className="left"> */}
-                <a href="/category" className="brand-logo"><i className="material-icons">store</i>Ecommerce</a>
+                <a href="/" className="brand-logo"><i className="material-icons">store</i>Ecommerce</a>
                 <ul className="right">
-                    <li><Link to ="/category"> Category</Link> </li>
+                    <li><Link to ="/"> Category</Link> </li>
                     <li><Link to ="#"> My Orders</Link> </li>
                     <li><Link to ="#"> My Cart</Link> </li>
                 </ul>

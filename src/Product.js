@@ -67,28 +67,33 @@ class ProductsPage extends Component {
                 features.push(products1[key])
         console.log(product.genFeatures)
         return (
-            <div className="products">
+            <div className="products left">
                 <hr/>
                     <div className="row">
-                        <div className="collection-item col s3">Name:</div>
-                        <div className="collection-item col s3">{product.productName}</div>
+                        <div className="collection-item col s6">Name:</div>
+                        <div className="collection-item col s6">{product.productName}</div>
                     </div>
 
                     <div className="row">
-                        <div className="collection-item col s3">Brand:</div>
-                        <div className="collection-item col s3">{product.brand}</div>
+                        <div className="collection-item col s6">Brand:</div>
+                        <div className="collection-item col s6">{product.brand}</div>
                     </div>
                     <div className="row">
-                        <div className="collection-item col s3">Price:</div>
-                        <div className="collection-item col s3">Rs.{product.price}</div>
+                        <div className="collection-item col s6">Price:</div>
+                        <div className="collection-item col s6">Rs.{product.price}</div>
+                    </div>
+                                            
+                    <div className="row">
+                        <div className="collection-item col s6">Product Description:</div>
+                        <div className="collection-item col s6">{product.desc}</div>
                     </div>
                     <div className="row">                    
-                        <div className="collection-item col s3">Product Description:</div>
+                        <div className="collection-item col s3">Product Features:</div>
                         <div className="collection-item col s3">
                         </div>
                     </div>
                     <div className="row">                    
-                        <div className="collection-item col s3">General features:</div>                    
+                        <div className="collection-item col s3">General Features:</div>                    
                     </div>
                     <div className="row">                    
                         <button className="waves-effect waves-light btn-small">

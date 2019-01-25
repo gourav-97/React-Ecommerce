@@ -22,7 +22,7 @@ class App extends Component {
           <Route exact path='/cat/:categoryId' component={SubCategory}/>
           <Route exact path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/> 
           <Route exact path='/product/:productId' component={Product}/> 
-        <Footer/>
+        {/* <Footer/> */}
       </div>
       </BrowserRouter>
     );

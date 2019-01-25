@@ -81,7 +81,8 @@ class ProductsPage extends Component {
                         <div className="collection-item col s3">Price:</div>
                         <div className="collection-item col s3">Rs.{product.price}</div>
                         <div className="collection-item col s3">Product Description:</div>
-                        <div className="collection-item col s3">{features.map(item=>{return item})}</div>
+                        <div className="collection-item col s3">{product.desc}</div>
+                        {/* <div className="collection-item col s3">{features.map(item=>{return item})}</div> */}
                         <div>
                         </div>
                         </Link>

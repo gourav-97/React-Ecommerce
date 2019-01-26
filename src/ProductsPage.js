@@ -2,43 +2,13 @@ import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
 import Filter from './Filter'
+import { Button } from 'semantic-ui-react';
 class ProductsPage extends Component {
     state = {
-        CategoryName: "",
-        Products: [],
-        Product : {
-            "id": "",
-            "name": "",
-            "price": null,
-            "imageUrl": "",
-            "quantity": null
-        },
-    }
-
-    handleClick=(product)=>{
-        this.setState({
-            Product:{
-                "name": product.productName,
-                "id": product.productId,
-                "price": product.price,
-                "imageUrl":"url",
-                "quantity": product.quantity   
-            }
-        },()=>{
-            this.handleAddToCart(product)});
+        Products:[],
+        subCatId:null
         }
 
-    handleAddToCart=(product)=>{
-        console.log(this.state.Product)
-        axios.post('http://samyak3.localhost.run/cart/addToCart',
-            this.state.Product,
-        {'Content-Type':'application/json'}).then(response => {
-            console.log(response)
-        })
-        .catch(error=>{
-            console.log(error);
-        })
-    }
     componentDidMount() {
         let name = this.props;
         // console.log(this.props)
@@ -50,7 +20,8 @@ class ProductsPage extends Component {
                 if(res.data.statusCode===200){
                     this.setState({
                         Products: res.data.responseData,
-                        CategoryName: name
+                        subCatId:subcatid,
+                        filterBy:null
                     })
                 }
                 else{
@@ -60,7 +31,46 @@ class ProductsPage extends Component {
             .catch(error=> {
                 console.log(error);
             });
+        }
+    // componentDidMount(){
+    // }
+
+    handleFilter=(value)=>{
+        axios.get('http://localhost:8080/filterByPopularScore/'+this.state.subCatId+'/'+value)
+        .then(res=>{
+            console.log(res);
+            if(res.data.statusCode===200){
+                this.setState({
+                    Products:res.data.responseData,
+                })
+            }
+        }).catch(error=>{
+            console.log(error);
+        });
+    return(
+            <div>
+
+            </div>
+        )
     }
+    handleSortLow=()=>{
+        return(
+            <div>
+
+            </div>
+        )
+    }
+
+    handleSortHigh=()=>{
+        
+        
+        return(
+            <div>
+
+            </div>
+        )
+    }
+
     render() {
         const prod = this.state;
         const products = prod.Products
@@ -96,8 +106,13 @@ class ProductsPage extends Component {
             </div>
             )
         return (
-            <div>
-                <Filter/>
+            <div className="container">
+            <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
+            <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
+            <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
+            <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
+
+            {/* <input type="radio" value="4" checked={this.state.filterBy==4} onChange={this.handleOptionChange}/> */}
                 {productsList}
             </div>
         )

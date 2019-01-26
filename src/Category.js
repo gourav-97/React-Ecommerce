@@ -20,7 +20,9 @@ class Category extends Component{
                 else{
                     alert(res.data.message);
                 }
-            })
+            }).catch(error=>{
+                console.log(error)
+            });
     }
 
     render(){

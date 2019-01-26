@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from 'semantic-ui-react';
-import Filter from './Filter'
+import * as constant from './constant'
 class PopularProductsPage extends Component
 {
     state={
@@ -11,7 +11,7 @@ class PopularProductsPage extends Component
     }
     componentDidMount(){
         let subcatid = this.props.match.params.subCategoryId;
-        axios.get('http://localhost:8080/categories/'+subcatid+'/products')
+        axios.get(constant.ms1+'/categories/'+subcatid+'/products')
          .then(res =>{
              if(res.data.statusCode===200){
                 this.setState({
@@ -25,7 +25,7 @@ class PopularProductsPage extends Component
     }
 
     handleFilter=(value)=>{
-        axios.get('http://localhost:8080/filterByPopularScore/'+this.state.subCatId+'/'+value)
+        axios.get(constant.ms1+'/filterByPopularScore/'+this.state.subCatId+'/'+value)
         .then(res=>{
             console.log(res);
             if(res.data.statusCode===200){
@@ -38,7 +38,7 @@ class PopularProductsPage extends Component
         });
     }
     handleSortLow=()=>{
-        axios.get('http://localhost:8080/sortByPriceLTH/'+this.state.subCatId)
+        axios.get(constant.ms1+'/sortByPriceLTH/'+this.state.subCatId)
         .then(res=>{
             console.log(res);
             if(res.data.statusCode===200){
@@ -52,7 +52,7 @@ class PopularProductsPage extends Component
     }
 
     handleSortHigh=()=>{
-        axios.get('http://localhost:8080/sortByPriceHTL/'+this.state.subCatId)
+        axios.get(constant.ms1+'/sortByPriceHTL/'+this.state.subCatId)
         .then(res=>{
             console.log(res);
             if(res.data.statusCode===200){
@@ -70,10 +70,6 @@ class PopularProductsPage extends Component
         const products = this.state.products
         const productsList = this.state.products.length ? (
             products.map((product, index) => {
-        //         let features=[];
-        //         let products1=product.genFeatures;
-        //         for(let key in products1)
-        //            features.push(products1[key])
                 return (
                     <div className="products row" key={index}>
                         <hr/>
@@ -87,7 +83,6 @@ class PopularProductsPage extends Component
                         
                         <div className="collection-item col s3">Product Description:</div>
                         <div className="collection-item col s3">{product.desc}</div>
-                        {/* <div className="collection-item col s3">{features.map(item=>{return item})}</div> */}
                         <div>
                     </div>
                          </Link>

@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
+import * as constant from './constant'
 import axios from 'axios';
 import { Button } from 'semantic-ui-react';
 class ProductsPage extends Component {
@@ -13,7 +14,7 @@ class ProductsPage extends Component {
         // console.log(this.props)
         let catid = this.props.match.params.categoryId;
         let subcatid = this.props.match.params.subcategoryId;
-        axios.get('http://localhost:8080/categories/' + catid + "/" + subcatid)
+        axios.get(constant.ms1+'/categories/' + catid + "/" + subcatid)
             .then(res => {
                 console.log(res.data);
                 if(res.data.statusCode===200){

@@ -2,15 +2,15 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import cart from './cart.png'
+import * as constant from './constant';
 // import  Material from 'material';
-import {ms4} from './constant/links'
 class Home extends Component{
     state = {
         summaries:[ ] 
      
     }
     componentDidMount = () => {
-        axios.get('http://ujjwal.localhost.run/orderSummary/')
+        axios.get(constant.ms4+'/orderSummary/')
             .then(res =>{
                console.log(res)
                this.setState({

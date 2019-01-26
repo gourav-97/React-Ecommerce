@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import * as constant from './constant'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Category.css';
@@ -9,7 +10,7 @@ class TopCategories extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/displayByTopScore')
+        axios.get(constant.ms1+'/displayByTopScore')
             .then(res =>{
                 console.log(res);
                 if((res.data.statusCode)===200){

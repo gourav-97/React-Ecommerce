@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import * as constant from './constant'
 import {withRouter} from 'react-router-dom';
 
 class ProductsPage extends Component {
@@ -50,7 +51,7 @@ class ProductsPage extends Component {
     }
     handleAddToCart=(product)=>{
         console.log(this.state.Product)
-        axios.post('http://samyak.localhost.run/cart/addToCart',
+        axios.post(constant.ms2+'/cart/addToCart',
             this.state.Product,
         {'Content-Type':'application/json'}).then(response => {
             console.log(response)

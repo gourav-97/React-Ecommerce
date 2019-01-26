@@ -6,16 +6,17 @@ import Filter from './Filter'
 class PopularProductsPage extends Component
 {
     state={
-        products:[]
+        products:[],
+        subCatId:null
     }
     componentDidMount(){
         let subcatid = this.props.match.params.subCategoryId;
         axios.get('http://localhost:8080/categories/'+subcatid+'/products')
          .then(res =>{
-             console.log(res.data);
              if(res.data.statusCode===200){
                 this.setState({
-                        products:res.data.responseData
+                        products:res.data.responseData,
+                        subCatId:subcatid
                     })
                 }
          }).catch(error=>{
@@ -29,7 +30,7 @@ class PopularProductsPage extends Component
             console.log(res);
             if(res.data.statusCode===200){
                 this.setState({
-                    Products:res.data.responseData,
+                    products:res.data.responseData,
                 })
             }
         }).catch(error=>{
@@ -42,7 +43,7 @@ class PopularProductsPage extends Component
             console.log(res);
             if(res.data.statusCode===200){
                 this.setState({
-                    Products:res.data.responseData,
+                    products:res.data.responseData,
                 })
             }
         }).catch(error=>{
@@ -56,7 +57,7 @@ class PopularProductsPage extends Component
             console.log(res);
             if(res.data.statusCode===200){
                 this.setState({
-                    Products:res.data.responseData,
+                    products:res.data.responseData,
                 })
             }
         }).catch(error=>{
@@ -66,7 +67,6 @@ class PopularProductsPage extends Component
 
     render(){
         const prod = this.state;
-        console.log(this.state.products)
         const products = this.state.products
         const productsList = this.state.products.length ? (
             products.map((product, index) => {

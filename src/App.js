@@ -10,6 +10,11 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
 import OrderHistory from './OrderHistory';
+import PaymentOption from './PaymentOption';
+import Banking from './Banking';
+import CardDetails from './CardDetails';
+import BankOption from './BankOption';
+import PaymentSuccess from './PaymentSuccess';
 
 class App extends Component {
   render() {
@@ -25,7 +30,12 @@ class App extends Component {
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
           <Route path='/categories/:subCategoryId/products' component={PopularProductsPage} />
           <Route exact path='/product/:productId' component={Product}/> 
-          <Route exact path='/orderHistory' component={OrderHistory}/> 
+          <Route exact path='/orderHistory' component={OrderHistory}/>
+          <Route exact path='/checkout' component={PaymentOption} />
+          <Route exact path='/payment/:mode' component={Banking} />
+          <Route path='/payment/:mode/details' component={CardDetails} />
+          <Route path='/payment/netbanking/list_banks' component={BankOption} />
+          <Route path='/payment/pay/status' component={PaymentSuccess} />
       <Footer/>
         </div>
       </BrowserRouter>

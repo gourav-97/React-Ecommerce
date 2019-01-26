@@ -8,8 +8,8 @@ const Header=()=>{
                 {/* <ul className="left"> */}
                 <a href="/" className="brand-logo"><i className="material-icons">store</i>Ecommerce</a>
                 <ul className="right">
-                    <li><Link to ="/"> Category</Link> </li>
-                    <li><Link to ="#"> My Orders</Link> </li>
+                    <li><Link to ="/"> Category</Link></li>
+                    <li><Link to ="/orderHistory"> Order History</Link></li>
                     <li><Link to ="#"> My Cart</Link> </li>
                 </ul>
             </div>

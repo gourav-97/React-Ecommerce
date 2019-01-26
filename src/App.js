@@ -9,6 +9,7 @@ import Product from './Product';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
+import OrderHistory from './OrderHistory';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
           <Route path='/categories/:subCategoryId/products' component={PopularProductsPage} />
           <Route exact path='/product/:productId' component={Product}/> 
+          <Route exact path='/orderHistory' component={OrderHistory}/> 
       <Footer/>
         </div>
       </BrowserRouter>

@@ -13,6 +13,7 @@ class ProductsPage extends Component {
             "imageUrl": "",
             "quantity": null
         },
+
     }
 
     handleClick=(product)=>{
@@ -78,10 +79,30 @@ class ProductsPage extends Component {
     }
     render() {
         const product = this.state.product;
-        let features=[];
+        let keys=[];
         let products1=product.genFeatures;
             for(let key in products1)
-                features.push(products1[key])
+            {
+                keys.push(key)
+            }
+        let keys2=[];
+        let products2=product.prodSpecs;
+            for(let key in products2)
+            {
+                keys2.push(key)
+            }
+    
+            const items = []
+
+            for (const [index, value] of keys.entries()) {
+                items.push(<li key={index}>{value} : {products1[value]}</li>)
+            }
+            const items2 = []
+
+            for (const [index, value] of keys2.entries()) {
+                items2.push(<li key={index}>{value} : {products2[value]}</li>)
+            }
+        
         console.log(product.genFeatures)
         return (
             <div className="products left">
@@ -106,11 +127,11 @@ class ProductsPage extends Component {
                     </div>
                     <div className="row">                    
                         <div className="collection-item col s3">Product Features:</div>
-                        <div className="collection-item col s3">
-                        </div>
+                        <div className="collection-item col s6">{items}</div>
                     </div>
                     <div className="row">                    
                         <div className="collection-item col s3">General Features:</div>                    
+                        <div className="collection-item col s6">{items2}</div>
                     </div>
                     <div className="row">                    
                         <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>

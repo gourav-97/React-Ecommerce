@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class ProductsPage extends Component {
     state = {
@@ -26,7 +27,26 @@ class ProductsPage extends Component {
         },()=>{
             this.handleAddToCart(product)});
         }
-
+    handleBuyNow=(product)=>{
+        console.log("Buying");
+        console.log(product)
+        this.setState({
+            Product:{
+                "name": product.productName,
+                "id": product.productId,
+                "price": product.price,
+                "imageUrl":"url",
+                "quantity": product.quantity   
+            }
+        },()=>{
+            this.props.history.push({
+                pathname: '/',
+                state:{
+                    Product:this.state.Product
+                }
+            })
+        })
+    }
     handleAddToCart=(product)=>{
         console.log(this.state.Product)
         axios.post('http://samyak3.localhost.run/cart/addToCart',
@@ -93,11 +113,11 @@ class ProductsPage extends Component {
                         <div className="collection-item col s3">General Features:</div>                    
                     </div>
                     <div className="row">                    
-                        <button className="waves-effect waves-light btn-small">
+                        <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
                             <i className="material-icons">add_shopping_cart</i>
                         </button>
                         &nbsp;
-                        <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
+                        <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>
                             <i className="material-icons">book</i>
                             Buy Now</button>
                         &nbsp;
@@ -106,4 +126,4 @@ class ProductsPage extends Component {
                 )
     }
 }
-export default ProductsPage;
+export default withRouter(ProductsPage);

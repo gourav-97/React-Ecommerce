@@ -1,7 +1,6 @@
 import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
-import Filter from './Filter'
 import { Button } from 'semantic-ui-react';
 class ProductsPage extends Component {
     state = {

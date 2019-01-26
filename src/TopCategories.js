@@ -35,7 +35,7 @@ class TopCategories extends Component{
                             <span className="card-name">Category Name: {category.categoryName}</span>
                             <p>Description: {category.desc}</p>
                         </div>
-                        {} <img className="card-image" src={category.picURL} alt=""/> }
+                         <img className="card-image" src={category.picURL} alt=""/> }
                         </Link>
                     </div>
                 )

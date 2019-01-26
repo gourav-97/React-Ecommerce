@@ -47,28 +47,33 @@ class ProductsPage extends Component {
         }).catch(error=>{
             console.log(error);
         });
-    return(
-            <div>
-
-            </div>
-        )
     }
     handleSortLow=()=>{
-        return(
-            <div>
-
-            </div>
-        )
+        axios.get('http://localhost:8080/sortByPriceLTH/'+this.state.subCatId)
+        .then(res=>{
+            console.log(res);
+            if(res.data.statusCode===200){
+                this.setState({
+                    Products:res.data.responseData,
+                })
+            }
+        }).catch(error=>{
+            console.log(error);
+        });
     }
 
     handleSortHigh=()=>{
-        
-        
-        return(
-            <div>
-
-            </div>
-        )
+        axios.get('http://localhost:8080/sortByPriceHTL/'+this.state.subCatId)
+        .then(res=>{
+            console.log(res);
+            if(res.data.statusCode===200){
+                this.setState({
+                    Products:res.data.responseData,
+                })
+            }
+        }).catch(error=>{
+            console.log(error);
+        });
     }
 
     render() {
@@ -108,7 +113,7 @@ class ProductsPage extends Component {
         return (
             <div className="container">
             <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
-            <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
+            <Button className="btn" onClick={()=>{this.handleFilter(5)}}>Filter By Greater Than 5</Button>
             <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
             <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
 

@@ -66,7 +66,6 @@ class PopularProductsPage extends Component
     }
 
     render(){
-        const prod = this.state;
         const products = this.state.products
         const productsList = this.state.products.length ? (
             products.map((product, index) => {

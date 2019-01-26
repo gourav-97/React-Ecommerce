@@ -7,8 +7,8 @@ class ProductsPage extends Component {
         CategoryName: "",
         product: {},
         Product : {
-            "id": "",
-            "name": "",
+            "productId": "",
+            "productName": "",
             "price": null,
             "imageUrl": "",
             "quantity": null
@@ -18,8 +18,8 @@ class ProductsPage extends Component {
     handleClick=(product)=>{
         this.setState({
             Product:{
-                "name": product.productName,
-                "id": product.productId,
+                "productName": product.productName,
+                "productId": product.productId,
                 "price": product.price,
                 "imageUrl":"url",
                 "quantity": product.quantity   
@@ -32,8 +32,8 @@ class ProductsPage extends Component {
         console.log(product)
         this.setState({
             Product:{
-                "name": product.productName,
-                "id": product.productId,
+                "productName": product.productName,
+                "productId": product.productId,
                 "price": product.price,
                 "imageUrl":"url",
                 "quantity": product.quantity   
@@ -49,7 +49,7 @@ class ProductsPage extends Component {
     }
     handleAddToCart=(product)=>{
         console.log(this.state.Product)
-        axios.post('http://samyak3.localhost.run/cart/addToCart',
+        axios.post('http://samyak.localhost.run/cart/addToCart',
             this.state.Product,
         {'Content-Type':'application/json'}).then(response => {
             console.log(response)

@@ -9,17 +9,15 @@ class PopularProductsPage extends Component
         products:[]
     }
     componentDidMount(){
-        let subcatid = this.props.match.params.subcategoryId;
+        let subcatid = this.props.match.params.subCategoryId;
         axios.get('http://localhost:8080/categories/'+subcatid+'/products')
          .then(res =>{
              console.log(res.data);
              if(res.data.statusCode===200){
-                this.setState(
-                    {
+                this.setState({
                         products:res.data.responseData
-                    }
-                )
-             }
+                    })
+                }
          }).catch(error=>{
             console.log(error);
         });
@@ -68,17 +66,18 @@ class PopularProductsPage extends Component
 
     render(){
         const prod = this.state;
-        const products = prod.Products
-        const productsList = this.state.Products.length ? (
+        console.log(this.state.products)
+        const products = this.state.products
+        const productsList = this.state.products.length ? (
             products.map((product, index) => {
-                let features=[];
-                let products1=product.genFeatures;
-                for(let key in products1)
-                   features.push(products1[key])
+        //         let features=[];
+        //         let products1=product.genFeatures;
+        //         for(let key in products1)
+        //            features.push(products1[key])
                 return (
                     <div className="products row" key={index}>
-                    <hr/>
-                    <Link to ={'/product/'+product.productId}>
+                        <hr/>
+                        <Link to ={'/product/'+product.productId}>
                         <div className="collection-item col s3">Name:</div>
                         <div className="collection-item col s3">{product.productName}</div>
                         <div className="collection-item col s3">Brand:</div>
@@ -90,16 +89,16 @@ class PopularProductsPage extends Component
                         <div className="collection-item col s3">{product.desc}</div>
                         {/* <div className="collection-item col s3">{features.map(item=>{return item})}</div> */}
                         <div>
-                        </div>
-                        </Link>
+                    </div>
+                         </Link>
                     </div>
                 )
             })
         ) : (
                 <div className="center">
                     No Products To Show
-            </div>
-            )
+            </div>   
+        )
         return (
             <div className="container">
             <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
@@ -110,8 +109,7 @@ class PopularProductsPage extends Component
             {/* <input type="radio" value="4" checked={this.state.filterBy==4} onChange={this.handleOptionChange}/> */}
                 {productsList}
             </div>
-        )
-    
+        )    
     }
     
 

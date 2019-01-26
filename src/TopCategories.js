@@ -30,7 +30,7 @@ class TopCategories extends Component{
             topCategories.map(category =>{
                 return(
                     <div className="category card" key={category.categoryId}>
-                        <Link to={{pathname:'/categories/'+category.categoryId+'/products',state:{categoryName:category.categoryName} }}>
+                        <Link to={'/categories/'+category.categoryId+'/products'}>
                         <div className="card-content">  
                             <span className="card-name">Category Name: {category.categoryName}</span>
                             <p>Description: {category.desc}</p>

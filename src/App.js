@@ -22,9 +22,8 @@ class App extends Component {
           <Route path='/cat/:categoryId' component={SubCategory}/>
           {/* <Route path='/subcat/:categoryId' component={TopProductsPage}/> */}
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
-          <Route path='categories/:subCategoryId/products' component={PopularProductsPage} />
+          <Route path='/categories/:subCategoryId/products' component={PopularProductsPage} />
           <Route exact path='/product/:productId' component={Product}/> 
-          
       <Footer/>
         </div>
       </BrowserRouter>

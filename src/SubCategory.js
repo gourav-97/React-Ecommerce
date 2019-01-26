@@ -12,8 +12,11 @@ class SubCategory extends Component{
         const id = this.props.match.params.categoryId;
         axios.get('http://localhost:8080/categories/'+id)
         .then(res=>{
-            console.log(res.data)
-            if(res.data.statusCode===200){
+            console.log(res.data.responseData)
+            console.log(res.data.statusCode)
+            if(res.data.statusCode==200){
+                console.log(res.data.responseData)
+                console.log(this.props.location.state)
                 let name = this.props.location.state.categoryName;
                 this.setState({
                     SubCategories: res.data.responseData,
@@ -24,14 +27,14 @@ class SubCategory extends Component{
             else{
                 alert(res.data.message);
             }
-         })
-        .catch(error=>{
+         }).catch(error=>{
             console.log(error.response)
             // if(error.response)
             //     console.log(error.response);
         })
     }
     render(){
+        console.log(this.state.SubCategories)
         const subcategoryList = this.state.SubCategories.length ? (
             this.state.SubCategories.map(subcategory =>{
                 return (

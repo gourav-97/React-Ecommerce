@@ -12,7 +12,7 @@ class PopularProducts extends Component{
         axios.get('http://localhost:8080/displayByPopularScore')
             .then(res =>{
                 console.log(res);
-                if((res.data.statusCode)==200){
+                if((res.data.statusCode)===200){
                     this.setState({
                         popularProducts:res.data.responseData
                     })    
@@ -27,7 +27,7 @@ class PopularProducts extends Component{
     const {popularProducts}=this.state;
     console.log(popularProducts)
     const productsList = popularProducts.length ?(
-            productsList.map(product =>{
+            popularProducts.map(product =>{
                 return(
                     <div className="products card" key={product.productId}>
                         <Link to={{pathname:'/product/'+product.productId,state:{productName:product.productName} }}>

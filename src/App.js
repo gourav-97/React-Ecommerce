@@ -17,14 +17,13 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
         <Header/>
-          <Route path="/" component={Home}/>
-          {/* <Route path='/category' component={Category}/> */}
+          <Route exact path="/" component={Home}/>
           <Route path='/about' component ={About}/>
           <Route path='/contact' component={Contact}/>
           <Route path='/cat/:categoryId' component={SubCategory}/>
-          <Route path='/subcat/:categoryId/:subcategoryId' component={Products}/>
-          {/* <Route path='/product/:productId' component={Products}/>  */}
-          {/* <Route path='/category/:categoryId' component={Category}/> */}
+          {/* <Route path='/subcat/:categoryId' component={TopProductsPage}/> */}
+          <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
+          <Route exact path='/product/:productId' component={Product}/> 
           
       <Footer/>
         </div>

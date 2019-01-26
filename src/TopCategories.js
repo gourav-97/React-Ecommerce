@@ -27,10 +27,10 @@ class TopCategories extends Component{
     const {topCategories}=this.state;
     console.log(topCategories)
     const topCategoriesList = topCategories.length ?(
-            topCategoriesList.map(category =>{
+            topCategories.map(category =>{
                 return(
                     <div className="category card" key={category.categoryId}>
-                        <Link to={{pathname:'/category/'+category.categoryId,state:{categoryName:category.categoryName} }}>
+                        <Link to={{pathname:'/cat/'+category.categoryId,state:{categoryName:category.categoryName} }}>
                         <div className="card-content">  
                             <span className="card-name">Category Name: {category.categoryName}</span>
                             <p>Description: {category.desc}</p>

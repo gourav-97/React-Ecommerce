@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import {BrowserRouter,Route } from 'react-router-dom'
 import Contact from './Contact';
 import About from './About';
-import Category from './Category';
 import SubCategory from './SubCategory';
 import ProductsPage from './ProductsPage';
 import Product from './Product';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
-import PopularProducts from './PopularProduct';
 
 class App extends Component {
   render() {

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Filter from './Filter'
 class ProductsPage extends Component {
     state = {
         CategoryName: "",
@@ -97,6 +97,7 @@ class ProductsPage extends Component {
             )
         return (
             <div>
+                <Filter/>
                 {productsList}
             </div>
         )

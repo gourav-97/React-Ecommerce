@@ -12,7 +12,7 @@ class TopCategories extends Component{
         axios.get('http://localhost:8080/displayByTopScore')
             .then(res =>{
                 console.log(res);
-                if((res.data.statusCode)==200){
+                if((res.data.statusCode)===200){
                     this.setState({
                         topCategories:res.data.responseData
                     })    

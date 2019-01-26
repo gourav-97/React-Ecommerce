@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -40,8 +39,6 @@ class ProductsPage extends Component {
         })
     }
     componentDidMount() {
-        let name = this.props;
-        // console.log(this.props)
         let productId = this.props.match.params.productId;
         axios.get('http://localhost:8080/products/' + productId)
             .then(res => {
@@ -107,11 +104,6 @@ class ProductsPage extends Component {
                     </div>
                 </div>
                 )
-        return (
-            <div>
-                {/* {productsList} */}
-            </div>
-        )
     }
 }
 export default ProductsPage;

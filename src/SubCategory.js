@@ -14,7 +14,7 @@ class SubCategory extends Component{
         .then(res=>{
             console.log(res.data.responseData)
             console.log(res.data.statusCode)
-            if(res.data.statusCode==200){
+            if(res.data.statusCode===200){
                 console.log(res.data.responseData)
                 console.log(this.props.location.state)
                 let name = this.props.location.state.categoryName;

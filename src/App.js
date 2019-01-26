@@ -4,6 +4,7 @@ import Contact from './Contact';
 import About from './About';
 import SubCategory from './SubCategory';
 import ProductsPage from './ProductsPage';
+import PopularProductsPage from './PopularProductsPage';
 import Product from './Product';
 import Header from './Header';
 import Footer from './Footer';
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path='/cat/:categoryId' component={SubCategory}/>
           {/* <Route path='/subcat/:categoryId' component={TopProductsPage}/> */}
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
+          <Route path='categories/:subCategoryId/products' component={PopularProductsPage} />
           <Route exact path='/product/:productId' component={Product}/> 
           
       <Footer/>

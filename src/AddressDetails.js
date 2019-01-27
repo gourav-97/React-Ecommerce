@@ -1,6 +1,7 @@
 import React ,{ Component } from 'react';
 import ProductDetails from './ProductDetails';
 import Axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class AddressDetails  extends Component {
     
@@ -61,4 +62,4 @@ class AddressDetails  extends Component {
     )
    }
 }
-export default AddressDetails
+export default withRouter(AddressDetails);

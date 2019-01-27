@@ -10,7 +10,6 @@ class ProductsPage extends Component {
         }
 
     componentDidMount() {
-        let name = this.props;
         // console.log(this.props)
         let catid = this.props.match.params.categoryId;
         let subcatid = this.props.match.params.subcategoryId;

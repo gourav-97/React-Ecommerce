@@ -21,6 +21,8 @@ class PopularProducts extends Component{
                 else{
                     alert(res.data.message);
                 }
+            }).catch(error=>{
+                console.error()
             })
     }
 

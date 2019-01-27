@@ -43,7 +43,7 @@ class Checkout extends Component{
          },{headers: headers}).then(res =>{
              console.log(res);
          });
-
+         
     
     };
 

@@ -16,7 +16,7 @@ import CardDetails from './CardDetails';
 import BankOption from './BankOption';
 import PaymentSuccess from './PaymentSuccess';
 import Checkout from './Checkout';
-
+import Cart from './Cart';
 class App extends Component {
   render() {
     return (

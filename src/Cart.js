@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, ButtonGroup, Container, Table } from "reactstrap";
 // import AppNavbar from "./AppNavbar";
 import axios from 'axios';
+import * as constant from './constant';
 
 class Cart extends Component {
   emptyCart = {
@@ -22,7 +23,7 @@ class Cart extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     this.setState({count:[]})
-    fetch("/cart")
+    fetch(constant.ms2 + "/cart")
       .then(response => response.json())
       .then(data => this.setState({ newCart: data, count : 1, isLoading: false }));
   }
@@ -30,7 +31,7 @@ class Cart extends Component {
   async remove(id,price) {
     console.log("In delete method " + id);
     // const{newCart,cartItemList = [newCart]} = this.state;
-    await fetch(`/cart/removeCartItem/${id}`, {
+    await fetch(constant.ms2 + `/cart/removeCartItem/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -55,7 +56,7 @@ class Cart extends Component {
   async placeOrder(cartList,newCart){
     console.log("AA raha hai " + this.state.newCart);
 
-    axios.post('http://localhost:8080/placeOrder',
+    axios.post(constant.ms2 + '/placeOrder',
            this.state.newCart,
        {'Content-Type':'application/json'}).then(res=>{
             console.log("REsponse = "+res)
@@ -83,7 +84,7 @@ class Cart extends Component {
 
   async removeAll() {
     // console.log("In delete method " + id);
-    await fetch(`/cart/emptyCart`, {
+    await fetch(constant.ms2 + `/cart/emptyCart`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

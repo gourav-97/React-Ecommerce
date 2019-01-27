@@ -10,7 +10,7 @@ const Header=()=>{
                 <ul className="right">
                     <li><Link to ="/"> Category</Link></li>
                     <li><Link to ="/orderHistory"> Order History</Link></li>
-                    <li><Link to ="#"> My Cart</Link> </li>
+                    <li><Link to ="/cart"> My Cart</Link> </li>
                 </ul>
             </div>
         </nav>       

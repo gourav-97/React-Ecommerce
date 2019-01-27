@@ -3,6 +3,7 @@ import {BrowserRouter,Route } from 'react-router-dom'
 import Contact from './Contact';
 import About from './About';
 import SubCategory from './SubCategory';
+import Category from './Category';
 import ProductsPage from './ProductsPage';
 import PopularProductsPage from './PopularProductsPage';
 import Product from './Product';
@@ -16,7 +17,7 @@ import CardDetails from './CardDetails';
 import BankOption from './BankOption';
 import PaymentSuccess from './PaymentSuccess';
 import Checkout from './Checkout';
-
+import Cart from './Cart';
 class App extends Component {
   render() {
     return (
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route path='/about' component ={About}/>
           <Route path='/contact' component={Contact}/>
+          <Route path='/category' component={Category}/>
           <Route path='/cat/:categoryId' component={SubCategory}/>
           {/* <Route path='/subcat/:categoryId' component={TopProductsPage}/> */}
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
@@ -38,6 +40,8 @@ class App extends Component {
           <Route path='/payment/pay/status' component={PaymentSuccess} />
           <Route exact path='/orderHistory' component={OrderHistory}/> 
           <Route exact path='/checkout' component={Checkout}/> 
+          <Route exact path='/cart' component={Cart}/>
+
         </div>
       </BrowserRouter>
     );

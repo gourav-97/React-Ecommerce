@@ -49,7 +49,7 @@ class Checkout extends Component{
                  }
              })
          });
-
+         
     
     };
 

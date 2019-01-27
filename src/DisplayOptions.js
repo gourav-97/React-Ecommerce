@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './PaymentOption.css';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
-
+import './DisplayOptions.css'
+// import { constants } from 'perf_hooks';
 // Class to choose a payment option and send the data by post request
 class DisplayOptions extends Component {
 
@@ -25,7 +26,7 @@ class DisplayOptions extends Component {
     // Function to send a post request with the selected payment option
     handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/payment', {     //   axios call to send a post request to API with selected payment option
+        axios.post('https://ff3b33d3.ngrok.io/payment', {     //   axios call to send a post request to API with selected payment option
             'orderId': this.state.orderId,
             'optionSelected': this.state.payment_option
             
@@ -52,6 +53,7 @@ class DisplayOptions extends Component {
         });
     }
 
+
     render() {
 
         // Display all the available options to the user using map
@@ -61,7 +63,12 @@ class DisplayOptions extends Component {
                 <div>
                     <div className="jumbotron">
                         {/* Displaying a radio button with each payment option */}
-                        <input type="radio" name="paymentOptionOpt" value={options} onChange={this.handleChange} required /> {options} 
+                        {/* <input type="radio" name="paymentOptionOpt" value={options} onClick={this.handleClick} onChange={this.handleChange} required /> {options}  */}
+                        <p>
+                            <label>
+                                <input name="paymentOptionOpt" type="radio" value={options} onChange={this.handleChange} /><span>{options}</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
             )
@@ -72,10 +79,16 @@ class DisplayOptions extends Component {
                 <div className="error-bar"></div>
                 <h2>Choose your payment option</h2>
                 <div className="options">
-                    <form onSubmit={this.handleSubmit}>
+                    {/* <form onSubmit={this.handleSubmit}>
                         {optionList}
                         <button>Next</button>
+                    </form> */}
+
+                    <form onSubmit={this.handleSubmit}>
+                            {optionList}
+                        <button>Next</button>
                     </form>
+
                     <img className="paymentModeImg" alt="Payment Mode Img" src="https://www.bharatbillpay.com/bbps-side/bbpsadmin/kcfinder/upload/images/1480567885_customer_mode.png" />
                 </div>
             </div>

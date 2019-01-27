@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayOptions from './DisplayOptions';
 import Navbar from './Navbar';
+import * as constant from './constant';
 
 // Class to display payment options by sending get request at /payment/init
 class PaymentOption extends Component {
@@ -15,9 +16,14 @@ class PaymentOption extends Component {
 
     // componentDidMount to receive payment options before loading the page
     componentDidMount() {
-        axios.post('/checkout', {
-            "orderId": "12345678",
+        console.log(this.props.location);
+        axios.post(constant.ms3+'/checkout', {
+            "orderId": this.props.location.state.orderId,
+            // 'productsId': ["123"],
+            // 'quantity': [1,2,3],
+            // 'amount':"4000" 
         }).then((response) => {
+            console.log(response)
             if(response.data.statusCode === 200) {      //  set state variable if get status code 200
                 this.setState({             //  Set the state variable to call render()
                     paymentOptions: response.data.responseData.options,

@@ -77,7 +77,7 @@ class Product extends Component {
     }
     componentDidMount() {
         let productId = this.props.match.params.productId;
-        axios.get('http://localhost:8080/products/' + productId)
+        axios.get(constant.ms1+'/products/' + productId)
             .then(res => {
                 // console.log(res.data);
                 if(res.data.statusCode===200){

@@ -38,6 +38,8 @@ class App extends Component {
           <Route path='/payment/pay/status' component={PaymentSuccess} />
           <Route exact path='/orderHistory' component={OrderHistory}/> 
           <Route exact path='/checkout' component={Checkout}/> 
+          <Route exact path='/cart' component={Cart}/>
+
         </div>
       </BrowserRouter>
     );

@@ -28,7 +28,8 @@ class Product extends Component {
                 "imageUrl":"url",
                 "quantity": product.quantity,   
                 "brand": product.brand
-            }
+            },
+            message:""
         },()=>{
             this.handleAddToCart(product)});
         }
@@ -38,6 +39,15 @@ class Product extends Component {
             this.state.Product,
         {'Content-Type':'application/json'}).then(response => {
             console.log(response)
+            if(response.data.statusCode===200){
+                this.setState({
+                    message:response.data.message
+                })
+
+            }else{
+                console.log(response.data.statusCode)
+                alert(response.data.message)
+            }
         })
         .catch(error=>{
             console.log(error);
@@ -121,45 +131,61 @@ class Product extends Component {
         
         // console.log(product.genFeatures)
         return (
-            <div className="products left">
+            <div className="products container">
                 <hr/>
-                    <div className="row">
-                        <div className="collection-item col s6">Name:</div>
-                        <div className="collection-item col s6">{product.productName}</div>
+                    <div className="row center message">{this.state.message}</div>
+                        <div className="row">
+                            <div className="col s6">
+                                <div className="row">
+                                    <div className="collection-item col s6">Name:</div>
+                                    <div className="collection-item col s6">{product.productName}</div>
+                                </div>    
+                            </div>
+                            <div className="col s6">
+                                <div className="row">
+                                    <div className="collection-item col s6">Name:</div>
+                                    <div className="collection-item col s6">{product.productName}</div>
+                                </div>                                    
+                            </div>
+                        </div>
+{/* 
+                        <div className="row">
+                            <div className="col s6">
+                                <div className="collection-item col s6">Name:</div>
+                                <div className="collection-item col s6">{product.productName}</div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="collection-item col s6">Brand:</div>
+                            <div className="collection-item col s6">{product.brand}</div>
+                        </div>
+                        <div className="row">
+                            <div className="collection-item col s6">Price:</div>
+                            <div className="collection-item col s6">Rs.{product.price}</div>
+                        </div>                   
+                        <div className="row">
+                            <div className="collection-item col s6">Product Description:</div>
+                            <div className="collection-item col s6">{product.desc}</div>
+                        </div>
+                        <div className="row">
+                            <div className="collection-item col s3">Product Features:</div>
+                            <div className="collection-item col s6">{items}</div>
+                        </div>
+                        <div className="row">                                            
+                            <div className="collection-item col s3">General Features:</div>                    
+                            <div className="collection-item col s6">{items2}</div>
+                        </div>                        
+                        <div className="row">                    
+                            <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
+                                <i className="material-icons">add_shopping_cart</i>Add to cart
+                            </button>
+                            &nbsp;
+                            <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>
+                                <i className="material-icons">book</i>
+                                Buy Now</button>
+                            &nbsp;
+                        </div> */}
                     </div>
-
-                    <div className="row">
-                        <div className="collection-item col s6">Brand:</div>
-                        <div className="collection-item col s6">{product.brand}</div>
-                    </div>
-                    <div className="row">
-                        <div className="collection-item col s6">Price:</div>
-                        <div className="collection-item col s6">Rs.{product.price}</div>
-                    </div>
-                                            
-                    <div className="row">
-                        <div className="collection-item col s6">Product Description:</div>
-                        <div className="collection-item col s6">{product.desc}</div>
-                    </div>
-                    <div className="row">                    
-                        <div className="collection-item col s3">Product Features:</div>
-                        <div className="collection-item col s6">{items}</div>
-                    </div>
-                    <div className="row">                    
-                    </div>
-                        <div className="collection-item col s3">General Features:</div>                    
-                        <div className="collection-item col s6">{items2}</div>
-                    <div className="row">                    
-                        <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
-                            <i className="material-icons">add_shopping_cart</i>Add to cart
-                        </button>
-                        &nbsp;
-                        <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>
-                            <i className="material-icons">book</i>
-                            Buy Now</button>
-                        &nbsp;
-                    </div>
-                </div>
                 )
     }
 }

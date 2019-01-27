@@ -1,46 +1,31 @@
 import React,{Component} from 'react'
-// import axios from 'axios'
+ import axios from 'axios'
 import Card from './Card';
 
 
 
 class ProductDetails extends Component{ 
-
-    // componentDidMount = () => {
-
-    // }
-
-    // render(){
-    //     console.log("yha aaya")
+    render(){
+        console.log(this.props)
         
-    //     const { productsList } = this.props;
-    //     const prodList = productsList.length > 0 ?
-    //     productsList.map(product => {
-    //         return(
-    //         <Card product={ product } />
-    //         )
-    //     }):
-    //     console.log('error');
-        
-    //     return (
-    //         <div className="" >
-    //             {prodList}
+        const  productsList  = this.props.productDetails.Product;
+        console.log(productsList.cartItemList[0].item.productName);
+        return (
+           <div className="post card" key={productsList.amountPayable} >
+                                <div className="card-content">
+                                <div className="card-title"> Total Cost {productsList.amountPayable}</div>                                
+                                <div className="card-title">Product Details </div>
+                                <div className="card-text">Product Name : {productsList.cartItemList[0].item.productName}</div>                               
+                                <div className="card-text">Quantity: {productsList.cartItemList[0].item.quantity}</div>  
+                                </div>
+                         </div>
+
+        )
 
 
-    //         </div>
-
-    //     )}
-
-
-
+        }
 }
 
-// const mapStateToProps = (state) => {
 
-//     return {
-//         productsList: state.products,
-        
-//     }
-// }
 
 export default ProductDetails

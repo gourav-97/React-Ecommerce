@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path='/product/:productId' component={Product}/> 
           <Route exact path='/orderHistory' component={OrderHistory}/> 
           <Route exact path='/checkout' component={Checkout}/> 
-      <Footer/>
+      {/* <Footer/> */}
         </div>
       </BrowserRouter>
     );

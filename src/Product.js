@@ -66,7 +66,7 @@ class Product extends Component {
                             Product:this.state.responseData
                         }
                     })
-                }).catch(error=>{
+                }).catch((error)=>{
                 console.log(error);
             }
             )}

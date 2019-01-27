@@ -32,7 +32,7 @@ class AddressDetails  extends Component {
     handleSubmit =(e) => {
         e.preventDefault();
         this.props.myCallBack(this.state);
-        {this.validatePinCode()};
+        // {this.validatePinCode()};
     }
 
    render(){
@@ -53,7 +53,7 @@ class AddressDetails  extends Component {
                 <input type="text" pattern="[a-zA-Z]*" id="state" onChange={this.handleChange} required />
                 <label htmlFor="pincode">Pincode:</label>
                 <input type="text" pattern="[0-9]*" id="pinCode" onChange={this.handleChange} maxLength="6" minLength="6" required/>
-                <button>Submit</button>
+                <button>Pay Now</button>
             </form>
       </div>
             

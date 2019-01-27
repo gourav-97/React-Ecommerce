@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Category.css';
 import * as constant from './constant';
+import './SubCategory.css';
 class Category extends Component{
     state={
         categories:{ },
@@ -32,13 +33,13 @@ class Category extends Component{
     const categoriesList = categories.length ?(
             categories.map(category =>{
                 return(
-                    <div className="category card" key={category.categoryId}>
+                    <div className="category card" key={category.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={{pathname:'/cat/'+category.categoryId,state:{categoryName:category.categoryName} }}>
                         <div className="card-content">  
                             <span className="card-name">Category Name: {category.categoryName}</span>
                             <p>Description: {category.desc}</p>
                         </div>
-                        <img className="card-image" src={category.picURL} alt=""/>
+                        <center><img className="card-image" style={{width:"200px", height:"200px"}} src={category.picURL} alt=""/></center>
                         </Link>
                     </div>
                 )

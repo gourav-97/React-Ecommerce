@@ -17,9 +17,6 @@ class PaymentOption extends Component {
     componentDidMount() {
         axios.post('/checkout', {
             "orderId": "12345678",
-            "productsId": ["123", "234"],
-            "quantity": [1,2,4],
-            "amount": "4000"
         }).then((response) => {
             if(response.data.statusCode === 200) {      //  set state variable if get status code 200
                 this.setState({             //  Set the state variable to call render()

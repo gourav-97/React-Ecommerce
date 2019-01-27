@@ -12,13 +12,13 @@ class Checkout extends Component{
                 state:null,
                 pinCode:null
         },
-        products: {
+        products: [{
                  productId : this.props.location.state.Product.cartItemList[0].item.productId,
                 productName: this.props.location.state.Product.cartItemList[0].item.productName,
                     brand:null,
                     price:this.props.location.state.Product.amountPayable,
                     quantity:this.props.location.state.Product.cartItemList[0].item.quantity
-        },
+        }],
         cartId:null,
         totalCost:this.props.location.state.Product.amountPayable
     }; 
@@ -35,7 +35,7 @@ class Checkout extends Component{
           console.log(this.state.cartId);
           console.log(this.state.addressDetails);
           console.log(this.state.totalCost);
-         axios.post(constant.ms4+'/addCartEntry/',{
+         axios.post(constant.ms4+'/addCartEntry',{
              cartId: this.state.cartId,
              products: this.state.products ,
              address : addressDetails ,

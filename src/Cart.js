@@ -114,10 +114,12 @@ class Cart extends Component {
   };
   
   decrement(item,newCart) {
-    if(item.quantity===0)
+    if(item.quantity==1)
     {
-      return;
+      this.remove(item.productId,item.price);
+      // window.location.reload();
     }
+    else{
     this.setState({
       count: item.quantity - 1
     });
@@ -126,6 +128,7 @@ class Cart extends Component {
     this.setState({
       newCart:newCart
     })
+  }
   };
 
 

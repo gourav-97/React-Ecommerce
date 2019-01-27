@@ -20,10 +20,12 @@ class PaymentSuccess extends Component {
             "orderId": this.props.location.state.orderId
         }).then((response) => {
             if(response.data.statusCode === 200) {     //   Display response if status code is 200
-                this.setState({
-                    success_msg: "Payment Successful!",
-                    error_msg: ""
-                })
+                this.props.history.push({
+                    pathname: '/orderSummary',
+                    state: {
+                        orderId: this.props.location.state.orderId
+                    }
+                });
             } else {        //  Display error if status is 400 / 404 / 405 / 500
                 this.setState({
                     success_msg: "",
@@ -39,7 +41,7 @@ class PaymentSuccess extends Component {
         return(
             <div className="display-response"> 
                 <Navbar /> 
-                <center><div className="success-bar">{this.state.success_msg}</div></center>
+                {/* <center><div className="success-bar">{this.state.success_msg}</div></center> */}
                 <center><div className="error-bar">{this.state.error_msg}</div></center>            
             </div>
         )

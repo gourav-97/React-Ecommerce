@@ -106,6 +106,22 @@ class Cart extends Component {
     });
     item.quantity = item.quantity + 1
     newCart.amountPayable = newCart.amountPayable + item.price
+    axios.post(constant.ms2 + '/cart/updateQuantity',
+           item,
+       {'Content-Type':'application/json'}).then(res=>{
+            console.log("Status = "+res.data.statusCode)
+            if(res.data.statusCode===200){
+                console.log("Data = "+res.data.responseData)
+            }
+            else{
+                window.location.reload();
+                alert(res.data.message);
+            }
+         }).catch(error=>{
+            console.log(error.response)
+            if(error.response)
+                console.log(error.response);
+        })
     this.setState({
       newCart:newCart
     })
@@ -125,6 +141,22 @@ class Cart extends Component {
     });
     item.quantity = item.quantity - 1
     newCart.amountPayable = newCart.amountPayable - item.price
+    axios.post(constant.ms2 + '/cart/updateQuantity',
+           item,
+       {'Content-Type':'application/json'}).then(res=>{
+            console.log("Status = "+res.data.statusCode)
+            if(res.data.statusCode===200){
+                console.log("Data = "+res.data.responseData)
+            }
+            else{
+                window.location.reload();
+                alert(res.data.message);
+            }
+         }).catch(error=>{
+            console.log(error.response)
+            if(error.response)
+                console.log(error.response);
+        })
     this.setState({
       newCart:newCart
     })

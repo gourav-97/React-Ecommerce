@@ -67,7 +67,7 @@ class DisplayBank extends Component {
             <div className="bank-list">
                 <form onSubmit={this.handleSubmit}>
                             {bankList}
-                        <button>Next</button>
+                        <button className="waves-effect waves-light btn-small">Next</button>
                     </form>
                 <img className="bank_image" alt="Bank-clip-art" src="https://investorsking.com/wp-content/uploads/2018/03/bank.jpg" width="500" />
             </div>            

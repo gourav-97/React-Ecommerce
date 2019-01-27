@@ -43,7 +43,7 @@ class TopCategories extends Component{
             })
     ):(
         <div className="center">
-            No Categories To Show
+            Loading Top Categories
         </div>
     )
     return(

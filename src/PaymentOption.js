@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayOptions from './DisplayOptions';
-import Navbar from './Navbar';
 import * as constant from './constant';
 
 // Class to display payment options by sending get request at /payment/init
@@ -44,7 +43,6 @@ class PaymentOption extends Component {
     render() {
         return (
             <div className="paymentOptions">
-                <Navbar />
                 <div className="error-bar">{this.state.error_msg}</div>
                 <DisplayOptions paymentOptions={this.state.paymentOptions} orderId={this.state.orderId} />
             </div>

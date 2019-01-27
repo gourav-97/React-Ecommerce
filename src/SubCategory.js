@@ -53,7 +53,7 @@ class SubCategory extends Component{
             })
         ):(
             <div className="center">
-                No Categories To Show
+                Loading SubCategories
             </div>
         )
         return(

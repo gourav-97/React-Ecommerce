@@ -1,0 +1,9 @@
+td {
+    width: 500px;
+}
+td:nth-child(odd){
+    background-color: #eee;
+}
+tr {
+    width: 100%;
+}

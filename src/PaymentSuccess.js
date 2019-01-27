@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './PaymentSuccess.css';
-import Navbar from './Navbar';
 import * as constant from './constant';
 
 // Class to show the status of Payment
@@ -39,8 +38,7 @@ class PaymentSuccess extends Component {
 
     render() {
         return(
-            <div className="display-response"> 
-                <Navbar /> 
+            <div className="display-response">
                 {/* <center><div className="success-bar">{this.state.success_msg}</div></center> */}
                 <center><div className="error-bar">{this.state.error_msg}</div></center>            
             </div>

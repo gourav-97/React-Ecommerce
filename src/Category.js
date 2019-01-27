@@ -46,7 +46,7 @@ class Category extends Component{
             })
     ):(
         <div className="center">
-            No Categories To Show
+            Loading Categories
         </div>
     )
     return(

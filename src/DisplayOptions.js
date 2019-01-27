@@ -86,7 +86,7 @@ class DisplayOptions extends Component {
 
                     <form onSubmit={this.handleSubmit}>
                             {optionList}
-                        <button>Next</button>
+                        <button className="waves-effect waves-light btn-small">Next</button>
                     </form>
 
                     <img className="paymentModeImg" alt="Payment Mode Img" src="https://www.bharatbillpay.com/bbps-side/bbpsadmin/kcfinder/upload/images/1480567885_customer_mode.png" />

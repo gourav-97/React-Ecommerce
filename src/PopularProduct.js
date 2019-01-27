@@ -20,7 +20,7 @@ class PopularProducts extends Component{
                     })    
                 }
                 else{
-                    alert(res.data.message);
+                    // alert(res.data.message);
                 }
             }).catch(error=>{
                 console.error()
@@ -46,7 +46,7 @@ class PopularProducts extends Component{
             })
     ):(
         <div className="center">
-            No Products To Show
+            Loading Products
         </div>
     )
     return(

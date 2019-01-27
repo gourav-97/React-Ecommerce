@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as constant from './constant'
 import {withRouter} from 'react-router-dom';
+import './Product.css';
 
 class Product extends Component {
     state = {
@@ -140,50 +141,49 @@ class Product extends Component {
         return (
             <div className="products container">
                 <hr/>
-                    <div className="row center message">{this.state.message}</div>
+                <table><div className="row center message">{this.state.message}</div>
                         <div className="row">
-                            <div className="col s6">
+                            <div className="col s12">
+                                
                                 <div className="row">
-                                    <div className="collection-item col s6">Name:</div>
-                                    <div className="collection-item col s6">{product.productName}</div>
-                                </div>    
-                                <div className="row">
-                                    <div className="collection-item col s6">Price:</div>
-                                    <div className="collection-item col s6">Rs.{product.price}</div>
-                                </div>                   
-                                <div className="row">                                            
-                                    <div className="collection-item col s3">General Features:</div>                    
-                                    <div className="collection-item col s6">{items2}</div>
-                                </div>                        
+                                <tr><td><div className="collection-item col s6">Name:</div></td>
+                                    <td><div className="collection-item col s6">{product.productName}</div></td></tr>
+                                    <tr><td><div className="collection-item col s6">Price:</div></td>
+                                    <td><div className="collection-item col s6">Rs.{product.price}</div></td></tr>
+                                </div>          
+                                <tr><div className="row">                                            
+                                    <td><div className="collection-item col s3">General Features:</div></td>                 
+                                    <td><div className="collection-item col s6">{items2}</div></td>
+                                </div></tr>     
                                 <div className="row">
                                     &nbsp;
-                                    <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>
-                                        <i className="material-icons">book</i>
-                                        Buy Now</button>
+                                    
                                     &nbsp;
                                 </div>
+                                
                             </div>
-                            <div className="col s6">
-                                <div className="row">
-                                    <div className="collection-item col s6">Brand:</div>
-                                    <div className="collection-item col s6">{product.brand}</div>
-                                </div>
-                                <div className="row">
-                                    <div className="collection-item col s6">Product Description:</div>
-                                    <div className="collection-item col s6">{product.desc}</div>
-                                </div>
-                                <div className="row">
-                                    <div className="collection-item col s3">Product Features:</div>
-                                    <div className="collection-item col s6">{items}</div>
+                            <div className="col s12">
+                            <div className="row">
+                            <tr><td><div className="collection-item col s6">Brand:</div></td>
+                                    <td><div className="collection-item col s6">{product.brand}</div></td></tr>
+                                    <tr><td><div className="collection-item col s6">Product Description:</div></td>
+                                    <td><div className="collection-item col s6">{product.desc}</div></td></tr>
+                                    <tr><td><div className="collection-item col s3">Product Features:</div></td>
+                                    <td><div className="collection-item col s6">{items}</div></td></tr>
                                 </div>
                                 <div className="row">                    
                                     <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
                                         <i className="material-icons">add_shopping_cart</i>Add to cart
-                                    </button>
+                                    </button> &nbsp;
+                                    <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>
+                                        <i className="material-icons">book</i>
+                                        Buy Now</button>
                                 </div>
                             </div>
                         </div>
+                        </table>
                 </div>
+                
                 )
     }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
 import './CardDetails.css';
 import axios from 'axios';
 import * as constant from './constant';
@@ -135,14 +134,13 @@ class CardDetails extends Component {
     render() {
         return(
             <div className="card-details">
-                <Navbar />
                 <div className="error-bar">{this.state.error_msg}</div>
                 <form className="card-form" onSubmit={this.handleSubmit}>
                     <input type="text" name="cardName" placeholder="Name on Card" className="card-name" value={this.state.cardName} onChange={this.handleChange} required /><br />
                     <input type="text" pattern="[0-9]*" name="cardNumber" placeholder="Card Number" className="card-number" value={this.state.cardNumber} onChange={this.handleChange} maxLength="16" minLength="16" required /><br />
                     <input type="text" name="validDate" placeholder="Valid Thru" className="valid-date" value={this.state.validDate} onChange={this.handleChange} required />
                     <input type="text" pattern="[0-9]*" name="cvv" placeholder="CVV" className="cvv" value={this.state.cvv} onChange={this.handleChange} maxLength="4" minLength="3" required /><br />
-                    <button>Proceed to Pay</button>
+                    <button className="waves-effect waves-light btn-small">Proceed to Pay</button>
                 </form>
                 <img alt="card-type" className="card-type" src="http://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-Transparent-PNG.png" width="300 "/>
             </div>

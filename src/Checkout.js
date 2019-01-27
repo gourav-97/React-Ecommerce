@@ -3,6 +3,8 @@ import ProductDetails from './ProductDetails';
 import AddressDetails from './AddressDetails';
 import axios from 'axios'
 import * as constant from './constant';
+import './Checkout.css';
+
 class Checkout extends Component{
     state ={
         addressDetails :            {
@@ -61,12 +63,13 @@ class Checkout extends Component{
         console.log(this.props.location.state.responseData)
         let leftCom = {
             float:'left',
-            width:'70%'
+            width:'50%'
         };
 
         let rightCom = {
             float:'right',
-            width:'30%'
+            width:'40%',
+            padding:"20px" 
         };
         return(
             <div>         

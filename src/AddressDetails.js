@@ -2,6 +2,7 @@ import React ,{ Component } from 'react';
 import ProductDetails from './ProductDetails';
 import Axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import './Checkout.css';
 
 class AddressDetails  extends Component {
     
@@ -42,7 +43,7 @@ class AddressDetails  extends Component {
           
         <div className="conatiner" >
                 <div className="error-bar">{this.state.error_msg}</div>
-                <h2 className="card-text">Please enter your delivery address</h2>
+                <h2 >Please enter your delivery address</h2>
             <form className="card-form" onSubmit={this.handleSubmit}>
                 <label htmlFor="street">Street:</label>
                 <input type="text" placeholder="Street" className="card-name"id="street" onChange={this.handleChange} required/>
@@ -54,7 +55,7 @@ class AddressDetails  extends Component {
                 <input type="text" pattern="[a-zA-Z]*" id="state" onChange={this.handleChange} required />
                 <label htmlFor="pincode">Pincode:</label>
                 <input type="text" pattern="[0-9]*" id="pinCode" onChange={this.handleChange} maxLength="6" minLength="6" required/>
-                <button>Pay Now</button>
+                <button className="waves-effect waves-light btn-small">Pay Now</button>
             </form>
       </div>
             

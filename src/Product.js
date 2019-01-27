@@ -13,7 +13,8 @@ class Product extends Component {
             "productName": "",
             "price": null,
             "imageUrl": "",
-            "quantity": null
+            "quantity": null,
+            "brand":""
         },
 
     }
@@ -21,11 +22,12 @@ class Product extends Component {
     handleClick=(product)=>{
         this.setState({
             Product:{
-                "productName": product.productName,
                 "productId": product.productId,
+                "productName": product.productName,
                 "price": product.price,
                 "imageUrl":"url",
-                "quantity": product.quantity   
+                "quantity": product.quantity,   
+                "brand": product.brand
             }
         },()=>{
             this.handleAddToCart(product)});
@@ -46,11 +48,12 @@ class Product extends Component {
         console.log("Buying"    );
         this.setState({
             Product:{
-                "productName": product.productName,
                 "productId": product.productId,
+                "productName": product.productName,
                 "price": product.price,
                 "imageUrl":"url",
-                "quantity": product.quantity
+                "quantity": product.quantity,
+                "brand":product.brand
             }
         },() => {
             axios.post(constant.ms2+'/cart/buy',this.state.Product,

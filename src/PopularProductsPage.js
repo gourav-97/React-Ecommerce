@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from 'semantic-ui-react';
-import * as constant from './constant'
+import * as constant from './constant';
 class PopularProductsPage extends Component
 {
     state={
@@ -95,27 +95,12 @@ class PopularProductsPage extends Component
         )
         return (
             <div className="container">
-                <div className="row">
-                <div className="col s6">
-                    <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
-                </div>
-                <div className="col s3">
-                </div>
-                <div className="col s3">
-                    <Button className="btn" onClick={()=>{this.handleFilter(4)}}>4 Star Products</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col s6">
-                    <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
-                </div>
-                <div className="col s3">
-                </div>
+            <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
+            <Button className="btn" onClick={()=>{this.handleFilter(5)}}>Filter By Greater Than 5</Button>
+            <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
+            <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
 
-                <div className="col s3">
-                    <Button className="btn" onClick={()=>{this.handleFilter(5)}}>5 Star Products</Button>
-                </div>
-            </div>
+            {/* <input type="radio" value="4" checked={this.state.filterBy==4} onChange={this.handleOptionChange}/> */}
                 {productsList}
             </div>
         )    

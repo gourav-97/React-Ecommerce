@@ -30,13 +30,13 @@ class TopCategories extends Component{
     const topCategoriesList = topCategories.length ?(
             topCategories.map(category =>{
                 return(
-                    <div className="category card" key={category.categoryId}>
+                    <div className="category card" key={category.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={'/categories/'+category.categoryId+'/products'}>
                         <div className="card-content">  
                             <span className="card-name">Category Name: {category.categoryName}</span>
                             <p>Description: {category.desc}</p>
                         </div>
-                         <img className="card-image" src={category.picURL} alt=""/> }
+                        <center><img className="card-image" src={category.picURL} style={{width:"200px", height:"200px"}} alt=""/></center> 
                         </Link>
                     </div>
                 )

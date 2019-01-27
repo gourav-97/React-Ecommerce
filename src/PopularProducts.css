@@ -1,4 +1,9 @@
-/* .center{
-    display: inline;
-
-} */
+.card-image{
+    width: 50%;
+}
+.card{
+    width:50%;
+}
+.product{
+    display: inline-block;
+}

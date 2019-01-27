@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Category.css';
+import './PopularProducts.css';
 import * as constant from './constant'
 class PopularProducts extends Component{
     state={
@@ -32,13 +33,13 @@ class PopularProducts extends Component{
     const productsList = popularProducts.length ?(
             popularProducts.map(product =>{
                 return(
-                    <div className="products card" key={product.productId}>
+                    <div className="product card" key={product.productId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={{pathname:'/product/'+product.productId,state:{productName:product.productName} }}>
                         <div className="card-content">  
                             <span className="card-name">Product Name: {product.productName}</span>
                             <p>Description: {product.desc}</p>
                         </div>
-                        {/* <img className="card-image" src={category.picURL} alt=""/> */}
+                        {/* <img className="card-image" src={category.picURL} alt=""/>  */}
                         </Link>
                     </div>
                 )

@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import * as constant from './constant'
 import {withRouter} from 'react-router-dom';
 
-class ProductsPage extends Component {
+class Product extends Component {
     state = {
         CategoryName: "",
         product: {},
+        responseData:null,
         Product : {
-            "id": "",
-            "name": "",
+            "productId": "",
+            "productName": "",
             "price": null,
             "imageUrl": "",
             "quantity": null
         },
+
     }
 
     handleClick=(product)=>{
         this.setState({
             Product:{
-                "name": product.productName,
-                "id": product.productId,
+                "productName": product.productName,
+                "productId": product.productId,
                 "price": product.price,
                 "imageUrl":"url",
                 "quantity": product.quantity   
@@ -27,29 +30,9 @@ class ProductsPage extends Component {
         },()=>{
             this.handleAddToCart(product)});
         }
-    handleBuyNow=(product)=>{
-        console.log("Buying");
-        console.log(product)
-        this.setState({
-            Product:{
-                "name": product.productName,
-                "id": product.productId,
-                "price": product.price,
-                "imageUrl":"url",
-                "quantity": product.quantity   
-            }
-        },()=>{
-            this.props.history.push({
-                pathname: '/',
-                state:{
-                    Product:this.state.Product
-                }
-            })
-        })
-    }
     handleAddToCart=(product)=>{
         console.log(this.state.Product)
-        axios.post('http://samyak3.localhost.run/cart/addToCart',
+        axios.post(constant.ms2+'/cart/addToCart',
             this.state.Product,
         {'Content-Type':'application/json'}).then(response => {
             console.log(response)
@@ -58,11 +41,42 @@ class ProductsPage extends Component {
             console.log(error);
         })
     }
+       
+    handleBuyNow=(product)=>{
+        console.log("Buying"    );
+        this.setState({
+            Product:{
+                "productName": product.productName,
+                "productId": product.productId,
+                "price": product.price,
+                "imageUrl":"url",
+                "quantity": product.quantity
+            }
+        },() => {
+            axios.post(constant.ms2+'/cart/buy',this.state.Product,
+            {'Content-Type':'application/json'})
+            .then((response) => {
+                this.setState({
+                    responseData:response.data.responseData
+                })
+                console.log(this.state.responseData)
+                this.props.history.push({
+                        pathname: "/checkout",
+                        state:{
+                            Product:this.state.responseData
+                        }
+                    })
+                }).catch((error)=>{
+                console.log(error);
+            }
+            )}
+        )
+    }
     componentDidMount() {
         let productId = this.props.match.params.productId;
         axios.get('http://localhost:8080/products/' + productId)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.statusCode===200){
                     this.setState({
                         product: res.data.responseData[0],
@@ -78,11 +92,31 @@ class ProductsPage extends Component {
     }
     render() {
         const product = this.state.product;
-        let features=[];
+        let keys=[];
         let products1=product.genFeatures;
             for(let key in products1)
-                features.push(products1[key])
-        console.log(product.genFeatures)
+            {
+                keys.push(key)
+            }
+        let keys2=[];
+        let products2=product.prodSpecs;
+            for(let key in products2)
+            {
+                keys2.push(key)
+            }
+    
+            const items = []
+
+            for (const [index, value] of keys.entries()) {
+                items.push(<li key={index}>{value} : {products1[value]}</li>)
+            }
+            const items2 = []
+
+            for (const [index, value] of keys2.entries()) {
+                items2.push(<li key={index}>{value} : {products2[value]}</li>)
+            }
+        
+        // console.log(product.genFeatures)
         return (
             <div className="products left">
                 <hr/>
@@ -106,12 +140,12 @@ class ProductsPage extends Component {
                     </div>
                     <div className="row">                    
                         <div className="collection-item col s3">Product Features:</div>
-                        <div className="collection-item col s3">
-                        </div>
+                        <div className="collection-item col s6">{items}</div>
                     </div>
                     <div className="row">                    
-                        <div className="collection-item col s3">General Features:</div>                    
                     </div>
+                        <div className="collection-item col s3">General Features:</div>                    
+                        <div className="collection-item col s6">{items2}</div>
                     <div className="row">                    
                         <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
                             <i className="material-icons">add_shopping_cart</i>
@@ -126,4 +160,4 @@ class ProductsPage extends Component {
                 )
     }
 }
-export default withRouter(ProductsPage);
+export default withRouter(Product);

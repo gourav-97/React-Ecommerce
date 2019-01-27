@@ -9,6 +9,13 @@ import Product from './Product';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
+import OrderHistory from './OrderHistory';
+import PaymentOption from './PaymentOption';
+import Banking from './Banking';
+import CardDetails from './CardDetails';
+import BankOption from './BankOption';
+import PaymentSuccess from './PaymentSuccess';
+import Checkout from './Checkout';
 
 class App extends Component {
   render() {
@@ -22,10 +29,15 @@ class App extends Component {
           <Route path='/cat/:categoryId' component={SubCategory}/>
           {/* <Route path='/subcat/:categoryId' component={TopProductsPage}/> */}
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>
-          <Route path='categories/:subCategoryId/products' component={PopularProductsPage} />
+          <Route path='/categories/:subCategoryId/products' component={PopularProductsPage} />
           <Route exact path='/product/:productId' component={Product}/> 
-          
-      <Footer/>
+          <Route exact path='/paymentOption' component={PaymentOption} />
+          <Route exact path='/payment/:mode' component={Banking} />
+          <Route path='/payment/:mode/details' component={CardDetails} />
+          <Route path='/payment/netbanking/list_banks' component={BankOption} />
+          <Route path='/payment/pay/status' component={PaymentSuccess} />
+          <Route exact path='/orderHistory' component={OrderHistory}/> 
+          <Route exact path='/checkout' component={Checkout}/> 
         </div>
       </BrowserRouter>
     );

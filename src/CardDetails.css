@@ -1,0 +1,41 @@
+body{ 
+    width: 100%;
+}
+form {
+    float: left;
+}
+input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid#a9a9a9;
+    border-radius: 3px;
+}
+.card-name {
+    width: 500px;
+}
+.card-form {
+    margin-top: 80px;
+}
+.card-number {
+    width: 500px;
+}
+.valid-date {
+    width: 235px;
+}
+.cvv {
+    width: 235px;
+}
+.card-type {
+    float: right;
+    margin-top: 100px;
+    margin-right: 150px;
+}
+.error-bar {
+    width: 200px;
+    line-height: 30px;
+    background-color: #f8d7da;
+    border-radius: .25rem;
+    color: #721c24;
+    text-align: center;
+    margin: 10px;
+}

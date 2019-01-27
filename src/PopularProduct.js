@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Category.css';
+import * as constant from './constant'
 class PopularProducts extends Component{
     state={
         popularProducts:{ },
@@ -9,7 +10,7 @@ class PopularProducts extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/displayByPopularScore')
+        axios.get(constant.ms1+'/displayByPopularScore')
             .then(res =>{
                 console.log(res);
                 if((res.data.statusCode)===200){

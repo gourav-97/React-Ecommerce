@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Category.css';
+import * as constant from './constant';
 class Category extends Component{
     state={
         categories:{ },
@@ -9,7 +10,7 @@ class Category extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/categories')
+        axios.get(constant.ms1+'/categories')
             .then(res =>{
                 console.log(res);
                 if((res.data.statusCode)===200){

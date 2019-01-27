@@ -1,4 +1,5 @@
 import React,{Component} from  'react';
+import * as constant from './constant'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ class SubCategory extends Component{
     }
     componentDidMount(){
         const id = this.props.match.params.categoryId;
-        axios.get('http://localhost:8080/categories/'+id)
+        axios.get(constant.ms1+'/categories/'+id)
         .then(res=>{
             console.log(res.data.responseData)
             console.log(res.data.statusCode)

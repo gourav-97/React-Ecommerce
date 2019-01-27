@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar';
 import './CardDetails.css';
 import axios from 'axios';
+import * as constant from './constant';
 
 // Class to enter card details
 class CardDetails extends Component {
@@ -101,7 +102,7 @@ class CardDetails extends Component {
         }
 
         // axios post request to send the data to backend
-        axios.post('/payment/card', {
+        axios.post(constant.ms3+'/payment/card', {
 
             "cardNumber": this.state.cardNumber,
             "cardType": this.state.cardType,

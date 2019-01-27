@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './PaymentSuccess.css';
 import Navbar from './Navbar';
+import * as constant from './constant';
 
 // Class to show the status of Payment
 class PaymentSuccess extends Component {
@@ -15,7 +16,7 @@ class PaymentSuccess extends Component {
     componentDidMount = () => {
 
         // Post request with orderId at /payment/pay
-        axios.post('/payment/pay', {
+        axios.post(constant.ms3+'/payment/pay', {
             "orderId": this.props.location.state.orderId
         }).then((response) => {
             if(response.data.statusCode === 200) {     //   Display response if status code is 200

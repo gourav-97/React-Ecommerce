@@ -3,7 +3,7 @@ import './PaymentOption.css';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './DisplayOptions.css'
-// import { constants } from 'perf_hooks';
+import * as constant from './constant'
 // Class to choose a payment option and send the data by post request
 class DisplayOptions extends Component {
 
@@ -26,7 +26,7 @@ class DisplayOptions extends Component {
     // Function to send a post request with the selected payment option
     handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('https://ff3b33d3.ngrok.io/payment', {     //   axios call to send a post request to API with selected payment option
+        axios.post(constant.ms3+'/payment', {     //   axios call to send a post request to API with selected payment option
             'orderId': this.state.orderId,
             'optionSelected': this.state.payment_option
             

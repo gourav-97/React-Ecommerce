@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayBank from './DisplayBank';
 import Navbar from './Navbar';
+import * as constant from './constant';
 
 // Class to display payment options by sending get request at /payment/init
 class BankOption extends Component {
@@ -16,7 +17,7 @@ class BankOption extends Component {
     // componentDidMount to receive payment options before loading the page
     componentDidMount = () => {
         // console.log(this.props.location.state.orderId);
-        axios.post('/payment/netbanking', {
+        axios.post(constant.ms3+'/payment/netbanking', {
             "orderId": this.props.location.state.orderId
         }).then((response) => {
             // console.log(response.data);

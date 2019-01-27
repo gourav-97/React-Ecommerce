@@ -95,12 +95,27 @@ class PopularProductsPage extends Component
         )
         return (
             <div className="container">
-            <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
-            <Button className="btn" onClick={()=>{this.handleFilter(5)}}>Filter By Greater Than 5</Button>
-            <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
-            <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
+                <div className="row">
+                <div className="col s6">
+                    <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
+                </div>
+                <div className="col s3">
+                </div>
+                <div className="col s3">
+                    <Button className="btn" onClick={()=>{this.handleFilter(4)}}>4 Star Products</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s6">
+                    <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
+                </div>
+                <div className="col s3">
+                </div>
 
-            {/* <input type="radio" value="4" checked={this.state.filterBy==4} onChange={this.handleOptionChange}/> */}
+                <div className="col s3">
+                    <Button className="btn" onClick={()=>{this.handleFilter(5)}}>5 Star Products</Button>
+                </div>
+            </div>
                 {productsList}
             </div>
         )    

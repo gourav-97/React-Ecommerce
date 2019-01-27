@@ -34,19 +34,20 @@ class Product extends Component {
             this.handleAddToCart(product)});
         }
     handleAddToCart=(product)=>{
-        console.log(this.state.Product)
         axios.post(constant.ms2+'/cart/addToCart',
             this.state.Product,
         {'Content-Type':'application/json'}).then(response => {
-            console.log(response)
             if(response.data.statusCode===200){
                 this.setState({
                     message:response.data.message
                 })
-
             }else{
-                console.log(response.data.statusCode)
-                alert(response.data.message)
+                this.props.history.push({
+                    pathname: "/error",
+                    state:{
+                        message:response.data.message
+                    }
+                })            
             }
         })
         .catch(error=>{
@@ -55,7 +56,7 @@ class Product extends Component {
     }
        
     handleBuyNow=(product)=>{
-        console.log("Buying"    );
+        console.log("Buying");
         this.setState({
             Product:{
                 "productId": product.productId,
@@ -70,9 +71,9 @@ class Product extends Component {
             {'Content-Type':'application/json'})
             .then((response) => {
                 this.setState({
+                    message:response.data.message,
                     responseData:response.data.responseData
                 })
-                console.log(this.state.responseData)
                 this.props.history.push({
                         pathname: "/checkout",
                         state:{
@@ -96,7 +97,12 @@ class Product extends Component {
                     })
                 }
                 else{
-                    alert(res.data.message)
+                    this.props.history.push({
+                        pathname: "/error",
+                        state:{
+                            message:res.data.message
+                        }
+                    })            
                 }
             })
             .catch(error=> {
@@ -176,7 +182,7 @@ class Product extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
                 )
     }
 }

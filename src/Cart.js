@@ -212,7 +212,7 @@ class Cart extends Component {
               <th width="20%" />
               <th width="20%">{newCart.amountPayable}</th>
               <th>
-              <Button size="sm" color="success" type="submit" onClick={() => this.removeAll()}>
+              <Button size="sm" disabled={newCart.cartItemList.length==0} color="success" type="submit" onClick={() => this.removeAll()}>
                 Empty Cart
               </Button>
               </th>
@@ -221,7 +221,7 @@ class Cart extends Component {
             <tr>
             <div className="float-left">
               {/* {console.log("NEW CART = "+newCart)} */}
-            <Button color="success" onClick={() => this.placeOrder(cartList,newCart)}> Place order </Button>
+            <Button color="success" disabled={newCart.cartItemList.length==0} onClick={() => this.placeOrder(cartList,newCart)}> Place order </Button>
           </div>
               
               </tr>

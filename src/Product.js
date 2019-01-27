@@ -151,7 +151,7 @@ class Product extends Component {
                         <div className="collection-item col s6">{items2}</div>
                     <div className="row">                    
                         <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
-                            <i className="material-icons">add_shopping_cart</i>
+                            <i className="material-icons">add_shopping_cart</i>Add to cart
                         </button>
                         &nbsp;
                         <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>

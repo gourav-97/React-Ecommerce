@@ -43,7 +43,13 @@ class Checkout extends Component{
              address : addressDetails ,
              totalCost:this.state.totalCost 
          },{headers: headers}).then(res =>{
-             console.log(res);
+             console.log(res.data.responseData.orderId);
+             this.props.history.push({
+                 pathname: '/paymentOption',
+                 state: {
+                     "orderId": res.data.responseData.orderId 
+                 }
+             })
          });
          
     

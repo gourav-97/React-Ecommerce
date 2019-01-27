@@ -3,6 +3,8 @@ import {BrowserRouter,Route } from 'react-router-dom'
 import Contact from './Contact';
 import About from './About';
 import SubCategory from './SubCategory';
+import Category from './Category';
+import Error from './Error';
 import ProductsPage from './ProductsPage';
 import PopularProductsPage from './PopularProductsPage';
 import Product from './Product';
@@ -25,7 +27,9 @@ class App extends Component {
         <Header/>
           <Route exact path="/" component={Home}/>
           <Route path='/about' component ={About}/>
+          <Route path='/error' component ={Error}/>
           <Route path='/contact' component={Contact}/>
+          <Route path='/category' component={Category}/>
           <Route path='/cat/:categoryId' component={SubCategory}/>
           {/* <Route path='/subcat/:categoryId' component={TopProductsPage}/> */}
           <Route path='/subcat/:categoryId/:subcategoryId' component={ProductsPage}/>

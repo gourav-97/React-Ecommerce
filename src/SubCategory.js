@@ -2,6 +2,7 @@ import React,{Component} from  'react';
 import * as constant from './constant'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import './SubCategory.css';
 
 class SubCategory extends Component{
     state={
@@ -39,12 +40,12 @@ class SubCategory extends Component{
         const subcategoryList = this.state.SubCategories.length ? (
             this.state.SubCategories.map(subcategory =>{
                 return (
-                    <div className="subcategory card" key={subcategory.categoryId}>
+                    <div className="subcategory card" key={subcategory.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={'/subcat/'+this.props.match.params.categoryId+'/'+subcategory.categoryId}>
                             <div className="card-content">
                                 <span className="card-name">{subcategory.categoryName}</span> 
                                 <p>{subcategory.desc}</p>
-                                <img className="card-image" src={subcategory.picURL} alt=""/>
+                                <center><img className="card-image" style={{width:"200px", height:"200px"}} src={subcategory.picURL} alt=""/></center>
                             </div>
                         </Link>
                     </div>

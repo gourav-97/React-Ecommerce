@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import './DisplayBank.css';
+import * as constant from './constant';
 
 // Class to display the bank list
 class DisplayBank extends Component {
@@ -24,7 +25,7 @@ class DisplayBank extends Component {
     // Function to handle form submit when user chooses from bank option
     handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/payment/netbanking/data', {
+        axios.post(constant.ms3+'/payment/netbanking/data', {
             "optionSelected": this.state.optionSelected,
 	        "orderId": this.state.orderId
         }).then((response) => {
@@ -52,7 +53,11 @@ class DisplayBank extends Component {
                 <div>
                     <div className="jumbotron">
                         {/* Displaying a radio button with each payment option */}
-                        <input type="radio" name="optionSelected" value={bank} onChange={this.handleChange} required /> {bank} 
+                        <p>
+                            <label>
+                                <input name="optionSelected" type="radio" value={bank} onChange={this.handleChange} /><span>{bank}</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
             )
@@ -60,10 +65,10 @@ class DisplayBank extends Component {
 
         return(
             <div className="bank-list">
-                <form onSubmit={this.handleSubmit}> 
-                    {bankList}
-                    <button>Pay Now</button>
-                </form>
+                <form onSubmit={this.handleSubmit}>
+                            {bankList}
+                        <button>Next</button>
+                    </form>
                 <img className="bank_image" alt="Bank-clip-art" src="https://investorsking.com/wp-content/uploads/2018/03/bank.jpg" width="500" />
             </div>            
         )

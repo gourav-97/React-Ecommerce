@@ -72,11 +72,11 @@ class Product extends Component {
                 this.setState({
                     responseData:response.data.responseData
                 })
-                console.log(this.state.responseData)
+                console.log(response.data.responseData)
                 this.props.history.push({
                         pathname: "/checkout",
                         state:{
-                            Product:this.state.responseData
+                            responseData:response.data.responseData
                         }
                     })
                 }).catch((error)=>{

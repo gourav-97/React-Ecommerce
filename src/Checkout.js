@@ -12,32 +12,34 @@ class Checkout extends Component{
                 state:null,
                 pinCode:null
         },
-        products: [{
-                 productId : this.props.location.state.Product.cartItemList[0].item.productId,
-                productName: this.props.location.state.Product.cartItemList[0].item.productName,
-                    brand:null,
-                    price:this.props.location.state.Product.amountPayable,
-                    quantity:this.props.location.state.Product.cartItemList[0].item.quantity
-        }],
+        products: [],
         cartId:null,
-        totalCost:this.props.location.state.Product.amountPayable
+        totalCost:this.props.location.state.responseData.amountPayable
     }; 
      myCallBack = (addressDetails) => {
-        console.log(addressDetails);
+        const prod =this.props.location.state.responseData.cartItemList;
+        
+        console.log(prod);
+
+        var mlist = []
+
+        prod.map(pro => {
+             console.log(pro["item"])
+             mlist.push(pro["item"]);
+            });
+
+        console.log(mlist);
         this.setState({
             addressDetails: this.addressDetails,
         });
-         console.log(this.state.products);
+    
         var headers = {
             'Content-Type': 'application/json'
         }
-          console.log(this.state.products);
-          console.log(this.state.cartId);
-          console.log(this.state.addressDetails);
-          console.log(this.state.totalCost);
+     
          axios.post(constant.ms4+'/addCartEntry',{
              cartId: this.state.cartId,
-             products: this.state.products ,
+             products: mlist ,
              address : addressDetails ,
              totalCost:this.state.totalCost 
          },{headers: headers}).then(res =>{
@@ -47,14 +49,10 @@ class Checkout extends Component{
     
     };
 
-    // componentDidMount = () => {
-    //     console.log("helooooo");
-    // }
-   
-
+  
     render(){
     
-        console.log(this.props.location.state)
+        console.log(this.props.location.state.responseData)
         let leftCom = {
             float:'left',
             width:'70%'
@@ -66,8 +64,7 @@ class Checkout extends Component{
         };
         return(
             <div>         
-                Hello   
-             <div style={rightCom}><ProductDetails productDetails={this.props.location.state}/></div>  
+             <div style={rightCom}><ProductDetails productDetails={this.props.location.state.responseData.cartItemList}/></div>  
             <div style={leftCom}><AddressDetails myCallBack={this.myCallBack} /></div>
             {/* <material /> */}
         </div>

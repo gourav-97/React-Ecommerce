@@ -5,19 +5,29 @@ import Card from './Card';
 
 
 class ProductDetails extends Component{ 
+    state={
+
+    }
     render(){
-        console.log(this.props)
-        
-        const  productsList  = this.props.productDetails.Product;
-        console.log(productsList.cartItemList[0].item.productName);
+               console.log(this.props);
+         const  totalProductsList  = this.props;
+         const productsList =this.props.productDetails;
+         const product = productsList.map(cartItem => {
+            return(
+                 <div className="card-title" >
+                                <div className="card-text">Product Name : {cartItem.item.productName}</div><br/>
+                                <div className="card-text">Brand : {cartItem.item.brand}</div><br/>
+                                <div className="card-text">Price : {cartItem.item.price}</div><br/>
+                                <div className="card-text">Quantity : {cartItem.item.quantity}</div><br/>
+                </div>
+            )
+
+         })
+        //  console.log(productsList.cartItemList[0].item.productName);
         return (
            <div className="post card" key={productsList.amountPayable} >
-                                <div className="card-content">
-                                <div className="card-title"> Total Cost {productsList.amountPayable}</div>                                
-                                <div className="card-title">Product Details </div>
-                                <div className="card-text">Product Name : {productsList.cartItemList[0].item.productName}</div>                               
-                                <div className="card-text">Quantity: {productsList.cartItemList[0].item.quantity}</div>  
-                                </div>
+                               {product}
+                               <div className="card-title"> {totalProductsList.amountPayable}</div>
                          </div>
 
         )

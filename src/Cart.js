@@ -64,7 +64,7 @@ class Cart extends Component {
             if(res.data.statusCode===200){
                 console.log(res.data.responseData)
                 this.props.history.push({
-                  pathname:"/order",
+                  pathname:"/checkout",
                   state:{
                     responseData: res.data.responseData
                   }

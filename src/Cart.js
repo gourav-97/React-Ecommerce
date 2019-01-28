@@ -38,7 +38,7 @@ class Cart extends Component {
         "Content-Type": "application/json"
       }
     }).then(() => {
-      console.log("anuj");
+      // console.log("anuj");
       // console.log(this.state.cartItemList[0].item.productId);
       let updatedCart = [...this.state.newCart.cartItemList].filter(
         cartItemList => cartItemList.item.productId !== id
@@ -54,7 +54,7 @@ class Cart extends Component {
   }
 
   async placeOrder(cartList,newCart){
-    console.log("AA raha hai " + this.state.newCart);
+    console.log(this.state.newCart);
 
     axios.post(constant.ms2 + '/placeOrder',
            this.state.newCart,
@@ -183,7 +183,7 @@ class Cart extends Component {
           <div>
        <button onClick={(e) => this.increment(cartItem.item,newCart)}>+</button>
        {cartItem.item.quantity}
-        <button onClick={(e) => this.decrement(cartItem.item,newCart)}>-</button>
+        <button disabled = {cartItem.item.quantity==1} onClick={(e) => this.decrement(cartItem.item,newCart)}>-</button>
       </div>
             
 

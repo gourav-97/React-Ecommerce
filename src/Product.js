@@ -17,7 +17,7 @@ class Product extends Component {
             "quantity": null,
             "brand":""
         },
-
+        message:""
     }
 
     handleClick=(product)=>{
@@ -141,7 +141,7 @@ class Product extends Component {
         return (
             <div className="products container">
                 <hr/>
-                <table><div className="row center message">{this.state.message}</div>
+                <table>
                         <div className="row">
                             <div className="col s12">
                                 
@@ -171,6 +171,7 @@ class Product extends Component {
                                     <tr><td><div className="collection-item col s3">Product Features:</div></td>
                                     <td><div className="collection-item col s6">{items}</div></td></tr>
                                 </div>
+                                <div className="row success-bar">{this.state.message}</div>
                                 <div className="row">                    
                                     <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
                                         <i className="material-icons">add_shopping_cart</i>Add to cart

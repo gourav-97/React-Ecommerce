@@ -41,7 +41,7 @@ class ProductsPage extends Component {
     // }
 
     handleFilter=(value)=>{
-        axios.get(constant.ms4+'/filterByPopularScore/'+this.state.subCatId+'/'+value)
+        axios.get(constant.ms1+'/filterByPopularScore/'+this.state.subCatId+'/'+value)
         .then(res=>{
             console.log(res);
             if(res.data.statusCode===200){
@@ -54,7 +54,7 @@ class ProductsPage extends Component {
         });
     }
     handleSortLow=()=>{
-        axios.get(constant.ms4+'/sortByPriceLTH/'+this.state.subCatId)
+        axios.get(constant.ms1+'/sortByPriceLTH/'+this.state.subCatId)
         .then(res=>{
             console.log(res);
             if(res.data.statusCode===200){
@@ -68,7 +68,7 @@ class ProductsPage extends Component {
     }
 
     handleSortHigh=()=>{
-        axios.get(constant.ms4+'/sortByPriceHTL/'+this.state.subCatId)
+        axios.get(constant.ms1+'/sortByPriceHTL/'+this.state.subCatId)
         .then(res=>{
             console.log(res);
             if(res.data.statusCode===200){

@@ -46,7 +46,8 @@ class Category extends Component{
             })
     ):(
         <div className="center">
-            Loading Categories
+            
+            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
         </div>
     )
     return(

@@ -20,6 +20,7 @@ import PaymentSuccess from './PaymentSuccess';
 import Checkout from './Checkout';
 import Cart from './Cart';
 import SingleOrder from './SingleOrder';
+import SingleOrder1 from './SingleOrder1';
 import FooterPage from './FooterPage';
 class App extends Component {
   render() {
@@ -46,6 +47,7 @@ class App extends Component {
           <Route exact path='/checkout' component={Checkout}/> 
           <Route exact path='/cart' component={Cart}/>
           <Route exact path='/orderSummary' component={SingleOrder}/>
+          <Route exact path='/orderSummary/:orderId' component={SingleOrder1}/>
         </div>
       </BrowserRouter>
     );

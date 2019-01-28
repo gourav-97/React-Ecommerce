@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import * as constant from './constant';
-class SingleOrder extends Component {
+class SingleOrder1 extends Component {
     state = {
         order: null,
         status: "",
@@ -9,7 +9,7 @@ class SingleOrder extends Component {
 
     componentDidMount() {
         console.log(this.props);
-        let id = this.props.location.state.orderId;
+        let id = this.props.match.params.orderId;
         axios.get(constant.ms4 +'/orderSummary/' + id)
             .then(res => {
                 this.setState({
@@ -29,10 +29,17 @@ class SingleOrder extends Component {
            this.setState({
             cancelStatus:"Order Cancelled",
             status:"Cancelled"
-           })
+            })
         })
-    }
        
+    }
+
+    showButton = () => {
+        console.log("herhehrehwehrh")
+        if(this.state.status === "Confirmed" || this.state.status=== "OutForDelivery"){
+       return  <a href="#" className="waves-effect waves-light btn" onClick={this.cancelOrder}><i className="material-icons right">cancel</i>Cancel Order</a>
+        }
+    }
 
     render() {
 
@@ -59,8 +66,8 @@ class SingleOrder extends Component {
                     ) : (<div className="center">No products to show</div>)
                     }
                  <div className="card-title">Order Status: {this.state.status}</div>
-                 <a href="#" className="waves-effect waves-light btn" disabled={(this.state.status==="Delivered")||(this.state.status==="Cancelled")} onClick={this.cancelOrder}><i className="material-icons right">cancel</i>Cancel Order</a>
-                 </div>
+                 <button className="waves-effect waves-light btn" disabled={(this.state.status==="Delivered")||(this.state.status==="Cancelled")} onClick={this.cancelOrder}><i className="material-icons right">cancel</i>Cancel Order</button>
+                </div>
             </div>
 
         ) : (
@@ -77,4 +84,4 @@ class SingleOrder extends Component {
     }
 }
 
-export default SingleOrder;
+export default SingleOrder1;

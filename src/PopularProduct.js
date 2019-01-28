@@ -46,12 +46,12 @@ class PopularProducts extends Component{
             })
     ):(
         <div className="center">
-            Loading Products
+            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
         </div>
     )
     return(
             <div className="container" >
-            <h4 className="center">Products</h4>
+            <h4 className="center">Popular Products</h4>
             {productsList}            
             </div>  
     )}

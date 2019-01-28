@@ -73,7 +73,7 @@ class Checkout extends Component{
         };
         return(
             <div>         
-             <div style={rightCom}><ProductDetails productDetails={this.props.location.state.responseData.cartItemList}/></div>  
+             <div style={rightCom}><ProductDetails productDetails={this.props.location.state.responseData.cartItemList} totalCost ={this.state.totalCost}/></div>  
             <div style={leftCom}><AddressDetails myCallBack={this.myCallBack} /></div>
             {/* <material /> */}
         </div>

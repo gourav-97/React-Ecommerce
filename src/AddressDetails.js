@@ -16,6 +16,7 @@ class AddressDetails  extends Component {
   }
     
       handleChange=(e) => {
+          const val=e.target.value
         this.setState({
             [e.target.id] : e.target.value
          })

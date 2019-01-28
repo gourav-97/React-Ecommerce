@@ -29,7 +29,7 @@ class Home extends Component{
         const summaryList = summaries.length ? (
             summaries.map(summary =>{
                 return (
-                                <div className="custom-card" key={summary.order_id} >
+                                <div className="order-history card" key={summary.order_id} >
                                 <img src={cart} alt="a cart"/>
                                 <div className="card-content">
                                 <Link to={'/orderSummary/' + summary.order_id}>

@@ -14,9 +14,15 @@ class PopularProductsPage extends Component
         axios.get(constant.ms1+'/categories/'+subcatid+'/products')
          .then(res =>{
              if(res.data.statusCode===200){
+                 console.log(res.data)
                 this.setState({
                         products:res.data.responseData,
                         subCatId:subcatid
+                    })
+                }
+                else{
+                    this.setState({
+                        message:res.data.message
                     })
                 }
          }).catch(error=>{
@@ -50,7 +56,6 @@ class PopularProductsPage extends Component
             console.log(error);
         });
     }
-
     handleSortHigh=()=>{
         axios.get(constant.ms1+'/sortByPriceHTL/'+this.state.subCatId)
         .then(res=>{
@@ -89,9 +94,9 @@ class PopularProductsPage extends Component
                 )
             })
         ) : (
-                <div className="center">
-                    No Products To Show
-            </div>   
+                <div className="center">            
+            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+        </div> 
         )
         return (
             <div className="container">

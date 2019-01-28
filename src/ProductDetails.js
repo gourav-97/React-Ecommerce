@@ -11,7 +11,7 @@ class ProductDetails extends Component{
     }
     render(){
                console.log(this.props);
-         const  totalProductsList  = this.props;
+         const  totalAmount  = this.props.totalCost;
          const productsList =this.props.productDetails;
          const product = productsList.map(cartItem => {
             return(
@@ -29,7 +29,7 @@ class ProductDetails extends Component{
         return (
            <div className="post card" key={productsList.amountPayable} >
                                {product}
-                               <div className="card-title"> {totalProductsList.amountPayable}</div>
+                               <div className="card-title"> Total Amount :{totalAmount}</div>
                          </div>
 
         )

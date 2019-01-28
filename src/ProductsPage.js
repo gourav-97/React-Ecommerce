@@ -24,7 +24,8 @@ class ProductsPage extends Component {
                     this.setState({
                         Products: res.data.responseData,
                         subCatId:subcatid,
-                        filterBy:null
+                        filterBy:null,
+                        message:""
                     })
                 }
                 else{
@@ -115,10 +116,15 @@ class ProductsPage extends Component {
                     </div>
                 )
             })
+        ): this.state.message ? (
+             <div className="center">
+                        <h2>{this.state.message}</h2>
+                    </div>
         ) : (
-                <div className="center">
-                    {this.state.message}
-            </div>
+                    <div className="center">
+                        <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+                    </div>
+                   
             )
         return (
             <div className="container">

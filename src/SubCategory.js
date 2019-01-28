@@ -53,8 +53,8 @@ class SubCategory extends Component{
             })
         ):(
             <div className="center">
-                Loading SubCategories
-            </div>
+            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+        </div>
         )
         return(
             <div className="container">    

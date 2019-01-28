@@ -6,8 +6,8 @@ class Home extends Component{
     render(){
         return(
             <div>
-                <PopularProducts/>
                 <TopCategories/>
+                <PopularProducts/>
                 <Category/>
             </div>
         )

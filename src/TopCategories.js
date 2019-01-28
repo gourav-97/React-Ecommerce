@@ -33,10 +33,10 @@ class TopCategories extends Component{
                     <div className="category card" key={category.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={'/categories/'+category.categoryId+'/products'}>
                         <div className="card-content">  
-                            <span className="card-name">Category Name: {category.categoryName}</span>
-                            <p>Description: {category.desc}</p>
-                        </div>
                         <center><img className="card-image" src={category.picURL} style={{width:"200px", height:"200px"}} alt=""/></center> 
+                            <span className="card-title">{category.categoryName}</span>
+                            <p> &nbsp;  &nbsp;  &nbsp; {category.desc}</p>
+                        </div>
                         </Link>
                     </div>
                 )

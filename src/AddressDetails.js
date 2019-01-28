@@ -40,12 +40,10 @@ class AddressDetails  extends Component {
 
    render(){
        return (
-
-          
         <div className="conatiner" >
                 <div className="error-bar">{this.state.error_msg}</div>
-                <h2 >Please enter your delivery address</h2>
             <form className="card-form" onSubmit={this.handleSubmit}>
+                <h2 >Please Enter your Delivery Address</h2>
                 <label htmlFor="street">Street:</label>
                 <input type="text" placeholder="Street" className="card-name"id="street" onChange={this.handleChange} required/>
                 <label htmlFor="colony">Colony:</label>

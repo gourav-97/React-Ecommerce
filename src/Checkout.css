@@ -1,9 +1,9 @@
-.card{
+.address-card{
     padding-left: 40px;
-    padding-right: 40px;
+    padding-right: 10px;
     padding-top: 40px;
     padding-bottom: 40px;
-    width: 350px;
+    width: 80%;
 }
 .card-title{
     margin: 20px;
@@ -18,6 +18,7 @@
     background-color: #eee;
     padding: 40px;
     border-radius: 5px;
+    margin-top: 2%;
 }
 .card-form:hover{
     box-shadow: 5px 5px 15px 15px #a9a9a9;

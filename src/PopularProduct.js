@@ -35,11 +35,15 @@ class PopularProducts extends Component{
                 return(
                     <div className="product card" key={product.productId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={{pathname:'/product/'+product.productId,state:{productName:product.productName} }}>
-                        <div className="card-content">  
-                            <span className="card-name">Product Name: {product.productName}</span>
-                            <p>Description: {product.desc}</p>
+                        <div className="extended-card">
+                        <img className="card-image left" width="10px" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        <div className="card-content right card-data-home">  
+                            <span className="card-title">{product.productName}</span>
+                            <p>&nbsp; &nbsp; &nbsp;{product.desc}</p>
+                            <p>&nbsp; &nbsp; &nbsp;{product.brand}</p> 
+                            <p>&nbsp; &nbsp; &nbsp;Price: ₹{product.price}</p>
                         </div>
-                        {/* <img className="card-image" src={category.picURL} alt=""/>  */}
+                        </div>
                         </Link>
                     </div>
                 )

@@ -59,39 +59,38 @@ class DisplayOptions extends Component {
         // Display all the available options to the user using map
         const {paymentOptions} = this.props;
         const optionList = paymentOptions.map(options => {
-            return (
-                <div>
-                    <div className="jumbotron">
-                        {/* Displaying a radio button with each payment option */}
-                        {/* <input type="radio" name="paymentOptionOpt" value={options} onClick={this.handleClick} onChange={this.handleChange} required /> {options}  */}
-                        <p>
-                            <label>
-                                <input name="paymentOptionOpt" type="radio" value={options} onChange={this.handleChange} /><span>{options}</span>
-                            </label>
-                        </p>
+                return (
+                    <div>
+                        <div className="jumbotron">
+                            {/* Displaying a radio button with each payment option */}
+                            {/* <input type="radio" name="paymentOptionOpt" value={options} onClick={this.handleClick} onChange={this.handleChange} required /> {options}  */}
+                            <p>
+                                <label>
+                                    <input name="paymentOptionOpt" type="radio" value={options} onChange={this.handleChange} /><span>{options}</span>
+                                </label>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            )
-        })
-
+                )
+            })
         return (
+            optionList.length?(
             <div className="paymentOptions">
                 <div className="error-bar"></div>
                 <h2>Choose your payment option</h2>
                 <div className="options">
-                    {/* <form onSubmit={this.handleSubmit}>
-                        {optionList}
-                        <button>Next</button>
-                    </form> */}
-
                     <form onSubmit={this.handleSubmit}>
                             {optionList}
                         <button className="waves-effect waves-light btn-small">Next</button>
                     </form>
-
                     <img className="paymentModeImg" alt="Payment Mode Img" src="https://www.bharatbillpay.com/bbps-side/bbpsadmin/kcfinder/upload/images/1480567885_customer_mode.png" />
                 </div>
             </div>
+            ):(
+            <div className="center">
+                <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+            </div>
+            )
         );
     }
 }

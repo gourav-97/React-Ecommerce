@@ -20,7 +20,12 @@ class Category extends Component{
                     })    
                 }
                 else{
-                    alert(res.data.message);
+                    this.props.history.push({
+                        pathname: "/error",
+                        state:{
+                            message:res.data.message
+                        }
+                    })            
                 }
             }).catch(error=>{
                 console.log(error)
@@ -35,11 +40,11 @@ class Category extends Component{
                 return(
                     <div className="category card" key={category.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
                         <Link to={{pathname:'/cat/'+category.categoryId,state:{categoryName:category.categoryName} }}>
-                        <div className="card-content">  
-                            <span className="card-name">Category Name: {category.categoryName}</span>
-                            <p>Description: {category.desc}</p>
-                        </div>
                         <center><img className="card-image" style={{width:"200px", height:"200px"}} src={category.picURL} alt=""/></center>
+                        <div className="card-content">  
+                            <span className="card-title">{category.categoryName}</span>
+                            <p> &nbsp;  &nbsp;  &nbsp; {category.desc}</p>
+                        </div>
                         </Link>
                     </div>
                 )

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from 'semantic-ui-react';
 import * as constant from './constant';
+import './PopularProductsPage.css';
+
 class PopularProductsPage extends Component
 {
     state={
@@ -72,12 +74,16 @@ class PopularProductsPage extends Component
 
     render(){
         const products = this.state.products
-        const productsList = this.state.products.length ? (
-            products.map((product, index) => {
+        const productsList = products.map((product, index) => {
                 return (
                     <div className="products row" key={index}>
                         <hr/>
                         <Link to ={'/product/'+product.productId}>
+                        <img className="card-image left" width="10px" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        
+
+
+
                         <div className="collection-item col s3">Name:</div>
                         <div className="collection-item col s3">{product.productName}</div>
                         <div className="collection-item col s3">Brand:</div>
@@ -93,21 +99,20 @@ class PopularProductsPage extends Component
                     </div>
                 )
             })
-        ) : (
-                <div className="center">            
-            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
-        </div> 
-        )
         return (
-            <div className="container">
-            <Button className="btn" onClick={()=>{this.handleFilter(4)}}>Filter By Greater Than 4</Button>
-            <Button className="btn" onClick={()=>{this.handleFilter(5)}}>Filter By Greater Than 5</Button>
-            <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
-            <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
-
-            {/* <input type="radio" value="4" checked={this.state.filterBy==4} onChange={this.handleOptionChange}/> */}
+            productsList.length?(
+                            <div className="container">
+            <Button className="btn popularFilter" onClick={()=>{this.handleFilter(3)}}>Average Rated</Button>
+            <Button className="btn popularFilter" onClick={()=>{this.handleFilter(5)}}>Top Rated</Button>
+            <Button className="btn popularFilter" onClick={this.handleSortLow}>Show Low to High</Button>
+            <Button className="btn popularFilter" onClick={this.handleSortHigh}>Show High to Low</Button>
                 {productsList}
             </div>
+            ):(
+                <div className="center">            
+                    <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+                </div> 
+            )
         )    
     }
     

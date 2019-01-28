@@ -4,7 +4,6 @@ import axios from 'axios';
 import * as constant from './constant';
 import { Button } from 'semantic-ui-react';
 import './ProductPage.css';
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 class ProductsPage extends Component {
     state = {
@@ -85,72 +84,47 @@ class ProductsPage extends Component {
     render() {
         const prod = this.state;
         const products = prod.Products
-        const productsList = this.state.Products.length ? (
-            products.map((product, index) => {
+        const productsList = products.map((product, index) => {
                 let features=[];
                 let products1=product.genFeatures;
                 for(let key in products1)
                    features.push(products1[key])
                 return (
-                    <div className="product card" style={{width:"48%", margin:"5px"}}>
-                        <div className="products row" key={index}>
-                        
+                    <div className="products row" key={index}>                        
                         <Link to ={'/product/'+product.productId}>
-                        <div className="card-content">
-                            <table> <tr>
-                            <td><div className="collection-item col s3">Name:</div></td>
-                            <td><div className="collection-item col s3">{product.productName}</div></td></tr>
-                            <tr><td><div className="collection-item col s3">Brand:</div></td>
-                            <td><div className="collection-item col s3">{product.brand}</div></td></tr>
-                            <tr><td><div className="collection-item col s3">Price:</div></td>
-                            <td><div className="collection-item col s3">Rs.{product.price}</div></td></tr>
-                            <tr><td><div className="collection-item col s3">Product Description:</div></td>
-                            <td><div className="collection-item col s3">{product.desc}</div></td></tr>
-                            {/* <div className="collection-item col s3">{features.map(item=>{return item})}</div> */}
-                             </table>
-                        </div>
-                            <div>
-                            </div>
-                            </Link>
-                        </div>
+                            <div className="collection-item col s3">Name:</div>
+                            <div className="collection-item col s3">{product.productName}</div>
+                            <div className="collection-item col s3">Brand:</div>
+                            <div className="collection-item col s3">{product.brand}</div>
+                            <div className="collection-item col s3">Price:</div>
+                            <div className="collection-item col s3">Rs.{product.price}</div>
+                            <div className="collection-item col s3">Product Description:</div>
+                            <div className="collection-item col s3">{product.desc}</div>
+                            <hr/>
+                        </Link>
                     </div>
                 )
             })
-        ): this.state.message ? (
-             <div className="center">
-                        <h2>{this.state.message}</h2>
+        return (
+            productsList.length ?(
+            <div className="container">
+            <Button className="btn popularFilter" onClick={()=>{this.handleFilter(3)}}>Average Rated</Button>
+            <Button className="btn popularFilter" onClick={()=>{this.handleFilter(5)}}>Top Rated</Button>
+            <Button className="btn popularFilter" onClick={this.handleSortLow}>Show Low to High</Button>
+            <Button className="btn popularFilter" onClick={this.handleSortHigh}>Show High to Low</Button>
+                {productsList}
+            </div>
+            ):(
+                this.state.message ? (
+                     <div className="center">
+                            <h2>{this.state.message}</h2>
                     </div>
-        ) : (
+                ) : (
                     <div className="center">
                         <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
                     </div>
-                   
+                )
             )
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col s6">
-                        <Button className="btn" onClick={this.handleSortHigh}>Sort By Decreasing Price</Button>
-                    </div>
-                    <div className="col s3">
-                    </div>
-                    <div className="col s3">
-                        <Button className="btn" onClick={()=>{this.handleFilter(4)}}>4 Star Products</Button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col s6">
-                        <Button className="btn" onClick={this.handleSortLow}>Sort By Increasing Price</Button>
-                    </div>
-                    <div className="col s3">
-                    </div>
-
-                    <div className="col s3">
-                        <Button className="btn" onClick={()=>{this.handleFilter(5)}}>5 Star Products</Button>
-                    </div>
-                </div>
-                {productsList}
-            </div>
         )
     }
 }

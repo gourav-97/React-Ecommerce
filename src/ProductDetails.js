@@ -27,7 +27,7 @@ class ProductDetails extends Component{
          })
         //  console.log(productsList.cartItemList[0].item.productName);
         return (
-           <div className="post card" key={productsList.amountPayable} >
+           <div className="card address-card" key={productsList.amountPayable} >
                                {product}
                                <div className="card-title"> Total Amount :{totalAmount}</div>
                          </div>

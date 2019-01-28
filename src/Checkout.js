@@ -63,12 +63,12 @@ class Checkout extends Component{
         console.log(this.props.location.state.responseData)
         let leftCom = {
             float:'left',
-            width:'50%'
+            width:'55%'
         };
 
         let rightCom = {
             float:'right',
-            width:'40%',
+            width:'45%',
             padding:"20px" 
         };
         return(

@@ -27,7 +27,12 @@ class SubCategory extends Component{
                 })
             }
             else{
-                alert(res.data.message);
+                this.props.history.push({
+                    pathname: "/error",
+                    state:{
+                        message:res.data.message
+                    }
+                })            
             }
          }).catch(error=>{
             console.log(error.response)

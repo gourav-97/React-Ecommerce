@@ -1,4 +1,4 @@
-export const ms1 = 'https://bde8a250.ngrok.io';
-export const ms2 = 'https://cb289950.ngrok.io';
-export const ms3 = 'https://ff3b33d3.ngrok.io';
-export const ms4 = 'http://d034eb08.ngrok.io';
+export const ms1 = 'http://10.10.212.75:8080';
+export const ms2 = 'http://10.10.212.81:8080';
+export const ms3 = 'http://10.10.212.19:8080';
+export const ms4 = 'http://10.10.212.66:8080';

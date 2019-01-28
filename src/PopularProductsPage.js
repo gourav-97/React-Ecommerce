@@ -15,14 +15,15 @@ class PopularProductsPage extends Component
         let subcatid = this.props.match.params.subCategoryId;
         axios.get(constant.ms1+'/categories/'+subcatid+'/products')
          .then(res =>{
-             if(res.data.statusCode===200){
-                 console.log(res.data)
+            console.log(res.data)
+            if(res.data.statusCode===200){
                 this.setState({
                         products:res.data.responseData,
                         subCatId:subcatid
                     })
                 }
                 else{
+                    console.log(res.data.message)
                     this.setState({
                         message:res.data.message
                     })
@@ -79,21 +80,21 @@ class PopularProductsPage extends Component
                     <div className="products row" key={index}>
                         <hr/>
                         <Link to ={'/product/'+product.productId}>
-                        <img className="card-image left" width="10px" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
-                        
-
-
-
-                        <div className="collection-item col s3">Name:</div>
-                        <div className="collection-item col s3">{product.productName}</div>
-                        <div className="collection-item col s3">Brand:</div>
-                        <div className="collection-item col s3">{product.brand}</div>
-                        <div className="collection-item col s3">Price:</div>
-                        <div className="collection-item col s3">Rs.{product.price}</div>
+                        <img className="left" width="150" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        <div className="product-preview">
+                        <div className="collection-item col s3">Name: {product.productName}</div>
+                        <div className="collection-item col s3">Brand: {product.brand}</div>
+                        <div className="collection-item col s3">Ratings: {product.popularScore} stars</div>  
                         
                         <div className="collection-item col s3">Product Description:</div>
-                        <div className="collection-item col s3">{product.desc}</div>
+                        <div className="collection-item col s6">{product.desc}</div>
+
+                        <div className="collection-item col s6 price">Price: ₹{product.price}</div>
+
+                        
+
                         <div>
+                        </div>
                     </div>
                          </Link>
                     </div>
@@ -109,9 +110,15 @@ class PopularProductsPage extends Component
                 {productsList}
             </div>
             ):(
-                <div className="center">            
-                    <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
-                </div> 
+                this.state.message ? (
+                    <div className="center">
+                           <h2>{this.state.message}</h2>
+                   </div>
+               ) : (
+                   <div className="center">
+                       <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+                   </div>
+               )
             )
         )    
     }

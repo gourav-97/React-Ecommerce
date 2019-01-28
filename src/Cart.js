@@ -28,16 +28,21 @@ class Cart extends Component {
       .then(data => this.setState({ newCart: data, count : 1, isLoading: false }));
   }
 
-  async remove(id,price) {
+  remove = (id,price, event) => {
     console.log("In delete method " + id);
+    this.setState({ isLoading: true });
+
     // const{newCart,cartItemList = [newCart]} = this.state;
-    await fetch(constant.ms2 + `/cart/removeCartItem/${id}`, {
+    fetch(constant.ms2 + `/cart/removeCartItem/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       }
     }).then(() => {
+      this.setState({isLoading: false});
+      // let updatedCart = [];
+      // window.location.reload();
       // console.log("anuj");
       // console.log(this.state.cartItemList[0].item.productId);
       let updatedCart = [...this.state.newCart.cartItemList].filter(
@@ -54,12 +59,13 @@ class Cart extends Component {
   }
 
   async placeOrder(cartList,newCart){
-    console.log(this.state.newCart);
-
+    console.log("AA raha hai " + this.state.newCart);
+    this.setState({ isLoading: true });
     axios.post(constant.ms2 + '/placeOrder',
            this.state.newCart,
        {'Content-Type':'application/json'}).then(res=>{
             console.log("REsponse = "+res)
+            this.setState({ isLoading: false });
             console.log(res.data.statusCode)
             if(res.data.statusCode===200){
                 console.log(res.data.responseData)
@@ -169,7 +175,11 @@ class Cart extends Component {
     const { newCart, isLoading } = this.state;
 
     if (isLoading) {
-      return <p>Loading...</p>;
+      return (
+      <div>
+        <p align = "center"><h3>Loading...</h3></p>
+      <p align = "center"><img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img></p>
+      </div>);
     }
     console.log("In render before cartList + ");
     const cartList = newCart.cartItemList.map(cartItem => {
@@ -178,17 +188,16 @@ class Cart extends Component {
           {console.log("Name = " + cartItem.item.price)}
           <td style={{ whiteSpace: "nowrap" }}>{cartItem.item.productName}</td>
           {/* <td>{cartItem.item.productName}</td> */}
-          <td>{cartItem.item.price}</td>
+          <td>₹{cartItem.item.price}</td>
           <td>
           <div>
        <button onClick={(e) => this.increment(cartItem.item,newCart)}>+</button>
        {cartItem.item.quantity}
-        <button disabled = {cartItem.item.quantity==1} onClick={(e) => this.decrement(cartItem.item,newCart)}>-</button>
+        <button disabled={cartItem.item.quantity==1} onClick={(e) => this.decrement(cartItem.item,newCart)}>-</button>
       </div>
-            
 
           </td>
-          <td>{cartItem.item.price * cartItem.item.quantity}</td>
+          <td>₹{cartItem.item.price * cartItem.item.quantity}</td>
           {/* <td>{cartItem.item.description}</td> */}
           {console.log("Cart  = " + newCart.amountPayable)}
           {/* <td>{newCart.amountPayable}</td> */}
@@ -196,11 +205,13 @@ class Cart extends Component {
             {/* {console.log(cart.item.id)} */}
             <ButtonGroup>
               <Button
-                size="sm"
+                size="sl"
                 color="danger"
-                onClick={() => this.remove(cartItem.item.productId,cartItem.item.price*cartItem.item.quantity)}
+                onClick={() => 
+                this.remove(cartItem.item.productId,cartItem.item.price*cartItem.item.quantity)
+                } 
               >
-                Delete
+                Remove Item
               </Button>
 
               {/* <Button size="sm" color="primary" tag={Link} to={"/groups/" + group.id}>Edit</Button> */}
@@ -226,9 +237,17 @@ class Cart extends Component {
         {/* <AppNavbar /> */}
         <Container fluid>
           {console.log("In table")}
-          <h2>
-            <center>My Cart</center>
-          </h2>
+          <p align="center"><h1>
+            {/* <tr>
+            <th width="20%"></th>
+            <th width="20%"></th>
+            <th width="20%"></th>
+            <th width="20%"></th>
+            <th width = "20%"> */}
+            My Cart
+            {/* </th>
+            </tr> */}
+          </h1></p>
           <Table className="mt-4">
             <thead>
               <tr>
@@ -245,19 +264,27 @@ class Cart extends Component {
               <th width="20%">Total Price</th>
               <th width="20%" />
               <th width="20%" />
-              <th width="20%">{newCart.amountPayable}</th>
+              <th width="20%">₹{newCart.amountPayable}</th>
               <th>
-              <Button size="sm" disabled={newCart.cartItemList.length==0} color="success" type="submit" onClick={() => this.removeAll()}>
-                Empty Cart
+              <Button size="s" disabled={newCart.cartItemList.length==0} color="danger" type="submit" onClick={() => this.removeAll()}>
+                Delete Cart
               </Button>
               </th>
             </tr>
             
             <tr>
-            <div className="float-left">
+              <th width = "20%"></th>
+              <th width = "20%"></th>
+              <th width = "20%"></th>
+              <th width = "20%"></th>
+              <th>
+            <div className="float-right">
+              <p>
               {/* {console.log("NEW CART = "+newCart)} */}
-            <Button color="success" disabled={newCart.cartItemList.length==0} onClick={() => this.placeOrder(cartList,newCart)}> Place order </Button>
+            <Button color="success"  disabled={newCart.cartItemList.length==0} onClick={() => this.placeOrder(cartList,newCart)}> Place order </Button>
+            </p>
           </div>
+          </th>
               
               </tr>
           </Table>

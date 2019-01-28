@@ -3,10 +3,8 @@
     width: 20%;
 }
 
-.card-image{
-    width: 30%;
+.left {
     margin-top: 0;
-    margin-bottom: 5%;
 }
 .card{
     width:50%;
@@ -24,4 +22,14 @@
 }
 .card-title {
     font-size: 15px;    
+}
+.product-preview {
+    margin-top: 3%;
+}
+a {
+    color: #090909;
+}
+.price {
+    font-size: 20px;
+    color: red
 }

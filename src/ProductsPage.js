@@ -90,17 +90,24 @@ class ProductsPage extends Component {
                 for(let key in products1)
                    features.push(products1[key])
                 return (
-                    <div className="products row" key={index}>                        
+                    <div className="products row" key={index}> 
+                    <hr/>                       
                         <Link to ={'/product/'+product.productId}>
-                            <div className="collection-item col s3">Name:</div>
-                            <div className="collection-item col s3">{product.productName}</div>
-                            <div className="collection-item col s3">Brand:</div>
-                            <div className="collection-item col s3">{product.brand}</div>
-                            <div className="collection-item col s3">Price:</div>
-                            <div className="collection-item col s3">Rs.{product.price}</div>
-                            <div className="collection-item col s3">Product Description:</div>
-                            <div className="collection-item col s3">{product.desc}</div>
-                            <hr/>
+                        <img className="left" width="150" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        <div className="product-preview">
+                        <div className="collection-item col s3">Name: {product.productName}</div>
+                        <div className="collection-item col s3">Brand: {product.brand}</div>
+                        <div className="collection-item col s3">Ratings: {product.popularScore} stars</div>  
+                        <div className="collection-item col s3">Product Description:</div>
+                        <div className="collection-item col s6">{product.desc}</div>
+
+                        <div className="collection-item col s6 price">Price: ₹{product.price}</div>
+
+                        
+
+                        <div>
+                        </div>
+                    </div>
                         </Link>
                     </div>
                 )
@@ -117,7 +124,7 @@ class ProductsPage extends Component {
             ):(
                 this.state.message ? (
                      <div className="center">
-                            <h2>{this.state.message}</h2>
+                            <center><h5>{this.state.message}</h5></center>
                     </div>
                 ) : (
                     <div className="center">

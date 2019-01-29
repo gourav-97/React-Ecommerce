@@ -34,9 +34,11 @@ class PopularProducts extends Component{
             popularProducts.map(product =>{
                 return(
                     <div className="product card" key={product.productId} style={{width:"48%", height:"50%", margin:"5px"}}>
-                        <Link to={{pathname:'/product/'+product.productId,state:{productName:product.productName} }}>
+                        <Link to={{pathname:'/product/'+product.productId,
+                                    state:{productName:product.productName,url:product.category}}}>
                         <div className="extended-card">
-                        <img className="card-image left" width="10px" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        {/* <img className="card-image left" width="10px" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/>  */}
+                        <img className="card-image left" width="10px" src={product.category} alt=""/> 
                         <div className="card-content right card-data-home">  
                             <span className="card-title">{product.productName}</span>
                             <p>&nbsp; &nbsp; &nbsp;{product.desc}</p>
@@ -50,7 +52,7 @@ class PopularProducts extends Component{
             })
     ):(
         <div className="center">
-            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+            <img alt="Sorry..Loading" src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
         </div>
     )
     return(

@@ -8,7 +8,7 @@ class Navbar extends Component {
         return (
             <div className="navbar">
                 <div className="header">
-                    <img className="logo" src="http://press.traveloka.com/wp-content/uploads/2015/08/Traveloka_Secondary_Logo.png" alt="logo" width="150" />
+                    <img className="logo" src="./logo.png" alt="logo" width="150" />
                     <span className="purpose">Payments</span>
                 </div>
             </div>

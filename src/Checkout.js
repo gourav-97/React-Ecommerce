@@ -45,6 +45,8 @@ class Checkout extends Component{
              address : addressDetails ,
              totalCost:this.state.totalCost 
          },{headers: headers}).then(res =>{
+            if((res.data.statusCode)===200){
+
              console.log(res.data.responseData.orderId);
              this.props.history.push({
                  pathname: '/paymentOption',
@@ -52,9 +54,18 @@ class Checkout extends Component{
                      "orderId": res.data.responseData.orderId 
                  }
              })
-         });
-         
-    
+            }
+            else{
+                this.props.history.push({
+                    pathname: "/error",
+                    state:{
+                        message:res.data.message
+                    }
+                })            
+            }   
+            }).catch(error=>{
+            console.log(error)
+        });
     };
 
   

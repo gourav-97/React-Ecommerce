@@ -79,8 +79,8 @@ class PopularProductsPage extends Component
                 return (
                     <div className="products row" key={index}>
                         <hr/>
-                        <Link to ={'/product/'+product.productId}>
-                        <img className="left" width="150" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        <Link to ={{pathname:'/product/'+product.productId,state:{url:this.props.location.state.url}}}>
+                        <img className="left" width="150" src={this.props.location.state.url} alt=""/> 
                         <div className="product-preview">
                         <div className="collection-item col s3">Name: {product.productName}</div>
                         <div className="collection-item col s3">Brand: {product.brand}</div>

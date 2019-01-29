@@ -31,7 +31,7 @@ class TopCategories extends Component{
             topCategories.map(category =>{
                 return(
                     <div className="category card" key={category.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
-                        <Link to={'/categories/'+category.categoryId+'/products'}>
+                        <Link to={{pathname:'/categories/'+category.categoryId+'/products',state:{url:category.picURL}}}>
                         <div className="card-content">  
                         <center><img className="card-image" src={category.picURL} style={{width:"200px", height:"200px"}} alt=""/></center> 
                             <span className="card-title">{category.categoryName}</span>
@@ -44,7 +44,7 @@ class TopCategories extends Component{
     ):(
         <div className="center">
             
-            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+            <img alt="Sorry..Loading" src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
         </div>
     )
     return(

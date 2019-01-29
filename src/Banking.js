@@ -39,7 +39,7 @@ class Banking extends Component {
         // For EMI
         else if(this.props.match.params.mode === "EMI") {
             this.props.history.push({
-                pathname: "/payment/pay/status",
+                pathname: "/payment/creditcard/details",
                 state: {
                     'orderId': this.props.location.state.orderId
                 }

@@ -57,8 +57,8 @@ class Product extends Component {
     }
        
     handleBuyNow=(product)=>{
-        console.log("Buying");
         this.setState({
+            message:"Buying Product,Please Wait",
             Product:{
                 "productId": product.productId,
                 "productName": product.productName,
@@ -92,7 +92,7 @@ class Product extends Component {
         let productId = this.props.match.params.productId;
         axios.get(constant.ms1+'/products/' + productId)
             .then(res => {
-                // console.log(res.data);
+                console.log(res.data);
                 if(res.data.statusCode===200){
                     this.setState({
                         product: res.data.responseData[0],
@@ -111,6 +111,7 @@ class Product extends Component {
                 console.log(error);
             });
     }
+    
     render() {
         const product = this.state.product;
         let keys=[];
@@ -141,10 +142,13 @@ class Product extends Component {
         return (
             <div className="products container">
                 <hr/>
+                <div className="row buying-bar">{this.state.message}</div>                                
                 <table>
                         <div className="row">
-                            <div className="col s12">
-                                
+                            <div className="col s4">
+                                <img className="left pro-img" src={this.props.location.state.url} alt=""/> 
+                            </div>
+                            <div className="col s6 right">
                                 <div className="row">
                                 <tr><td><div className="collection-item col s6">Name:</div></td>
                                     <td><div className="collection-item col s6">{product.productName}</div></td></tr>
@@ -153,35 +157,33 @@ class Product extends Component {
                                 </div>          
                                 <tr><div className="row">                                            
                                     <td><div className="collection-item col s3">General Features:</div></td>                 
-                                    <td><div className="collection-item col s6">{items2}</div></td>
+                                    <td><div className="collection-item col s12">{items2}</div></td>
                                 </div></tr>     
                                 <div className="row">
                                     &nbsp;
-                                    
                                     &nbsp;
                                 </div>
-                                
-                            </div>
-                            <div className="col s12">
+                            {/* </div> */}
+                            {/* <div className="col s6"> */}
                             <div className="row">
                             <tr><td><div className="collection-item col s6">Brand:</div></td>
                                     <td><div className="collection-item col s6">{product.brand}</div></td></tr>
                                     <tr><td><div className="collection-item col s6">Product Description:</div></td>
-                                    <td><div className="collection-item col s6">{product.desc}</div></td></tr>
+                                    <td><div className="collection-item col s12">{product.desc}</div></td></tr>
                                     <tr><td><div className="collection-item col s3">Product Features:</div></td>
-                                    <td><div className="collection-item col s6">{items}</div></td></tr>
+                                    <td><div className="collection-item col s12">{items}</div></td></tr>
                                 </div>
-                                <div className="row success-bar">{this.state.message}</div>
                                 <div className="row">                    
-                                    <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleClick(product)}}>
+                                    <button className="waves-effect waves-light btn-large " onClick={()=>{this.handleClick(product)}}>
                                         <i className="material-icons">add_shopping_cart</i>Add to cart
                                     </button> &nbsp;
-                                    <button className="waves-effect waves-light btn-small" onClick={()=>{this.handleBuyNow(product)}}>
+                                    <button className="waves-effect waves-light btn-large right" onClick={()=>{this.handleBuyNow(product)}}>
                                         <i className="material-icons">book</i>
                                         Buy Now</button>
                                 </div>
                             </div>
-                        </div>
+                            </div>
+                        {/* </div> */}
                         </table>
                 </div>
                 

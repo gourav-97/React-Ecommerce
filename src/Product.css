@@ -7,11 +7,16 @@ td:nth-child(odd){
 tr {
     width: 100%;
 }
-.success-bar {
+.buying-bar {
     line-height: 30px;
-    background-color: #d4edda;
     border-radius: .25rem;
-    color: #155724;
     text-align: center;
     margin: 10px;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.pro-img {
+    margin-top: 15%;
+    width: 120%;
 }

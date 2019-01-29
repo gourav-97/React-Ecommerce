@@ -46,7 +46,7 @@ class SubCategory extends Component{
             this.state.SubCategories.map(subcategory =>{
                 return (
                     <div className="subcategory card" key={subcategory.categoryId} style={{width:"48%", height:"50%", margin:"5px"}}>
-                        <Link to={'/subcat/'+this.props.match.params.categoryId+'/'+subcategory.categoryId}>
+                        <Link to={{pathname:'/subcat/'+this.props.match.params.categoryId+'/'+subcategory.categoryId,state:{url:subcategory.picURL}}}>
                             <div className="card-content">
                                 <span className="card-name">{subcategory.categoryName}</span> 
                                 <p>{subcategory.desc}</p>
@@ -58,7 +58,7 @@ class SubCategory extends Component{
             })
         ):(
             <div className="center">
-            <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+            <img alt="Sorry..Loading" src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
         </div>
         )
         return(

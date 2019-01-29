@@ -1,3 +1,15 @@
-.order-history {
+.posts {
     width: 1000px;
+}
+.order-id {
+    color: #00026A;
+}
+.summary-data {
+    padding-left: 20px;
+    font-size: 18px;
+}
+.summary-status {
+    padding-left: 20px;
+    font-size: 20px;
+    color: red;
 }

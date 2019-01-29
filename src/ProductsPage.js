@@ -92,19 +92,15 @@ class ProductsPage extends Component {
                 return (
                     <div className="products row" key={index}> 
                     <hr/>                       
-                        <Link to ={'/product/'+product.productId}>
-                        <img className="left" width="150" src="https://www.brother.ca/resources/images/no-product-image.png" alt=""/> 
+                        <Link to ={{pathname:'/product/'+product.productId,state:{url:this.props.location.state.url}}}>
+                        <img className="left" width="150" src={this.props.location.state.url} alt=""/> 
                         <div className="product-preview">
                         <div className="collection-item col s3">Name: {product.productName}</div>
                         <div className="collection-item col s3">Brand: {product.brand}</div>
                         <div className="collection-item col s3">Ratings: {product.popularScore} stars</div>  
                         <div className="collection-item col s3">Product Description:</div>
                         <div className="collection-item col s6">{product.desc}</div>
-
                         <div className="collection-item col s6 price">Price: ₹{product.price}</div>
-
-                        
-
                         <div>
                         </div>
                     </div>
@@ -128,7 +124,7 @@ class ProductsPage extends Component {
                     </div>
                 ) : (
                     <div className="center">
-                        <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+                        <img alt="Sorry..Loading" src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
                     </div>
                 )
             )

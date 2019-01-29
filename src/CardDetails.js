@@ -26,6 +26,18 @@ class CardDetails extends Component {
         })
     }
 
+    // Funtion to validate cardName
+    validateCardName = () => {
+        if(this.state.cardName.trim() == "") {
+            return false;
+        } else {
+            // this.setState({
+            //     cardName: this.state.cardName.trim();
+            // });
+            return true;
+        }
+    }
+
     //  Function to validate cardNumber
     validateCardNumber = () => {
         let oddSum = 0;
@@ -78,25 +90,30 @@ class CardDetails extends Component {
     // Funtion to save card details on submit
     handleSubmit = (event) => {
         event.preventDefault();
-        if(!this.validateCardNumber()) {
-
+        if(!this.validateCardName()) {
             this.setState({
                 error_msg: "Please enter a valid card Number!"
             })
         } else {
-
-            this.setState({
-                error_msg: ""
-            })
-
-            if(!this.validateCvv()) {
+            if(!this.validateCardNumber()) {
                 this.setState({
-                    error_msg: "Please enter a valid CVV!"
+                    error_msg: "Please enter a valid card Number!"
                 })
             } else {
+
                 this.setState({
                     error_msg: ""
                 })
+
+                if(!this.validateCvv()) {
+                    this.setState({
+                        error_msg: "Please enter a valid CVV!"
+                    })
+                } else {
+                    this.setState({
+                        error_msg: ""
+                    })
+                }
             }
         }
 
@@ -136,9 +153,9 @@ class CardDetails extends Component {
             <div className="card-details">
                 <div className="error-bar">{this.state.error_msg}</div>
                 <form className="card-form" onSubmit={this.handleSubmit}>
-                    <input type="text" name="cardName" placeholder="Name on Card" className="card-name" value={this.state.cardName} onChange={this.handleChange} required /><br />
+                    <input type="text" pattern="[A-Za-z]*" name="cardName" placeholder="Name on Card" className="card-name" value={this.state.cardName} onChange={this.handleChange} required /><br />
                     <input type="text" pattern="[0-9]*" name="cardNumber" placeholder="Card Number" className="card-number" value={this.state.cardNumber} onChange={this.handleChange} maxLength="16" minLength="16" required /><br />
-                    <input type="text" name="validDate" placeholder="Valid Thru" className="valid-date" value={this.state.validDate} onChange={this.handleChange} required />
+                    <input type="text" name="validDate" placeholder="Valid Thru (MM/YY)" className="valid-date" value={this.state.validDate} onChange={this.handleChange} required />
                     <input type="text" pattern="[0-9]*" name="cvv" placeholder="CVV" className="cvv" value={this.state.cvv} onChange={this.handleChange} maxLength="4" minLength="3" required /><br />
                     <button className="waves-effect waves-light btn-small">Proceed to Pay</button>
                 </form>

@@ -48,6 +48,7 @@ class App extends Component {
           <Route exact path='/cart' component={Cart}/>
           <Route exact path='/orderSummary' component={SingleOrder}/>
           <Route exact path='/orderSummary/:orderId' component={SingleOrder1}/>
+          <Footer/>
         </div>
       </BrowserRouter>
     );

@@ -56,7 +56,7 @@ class Category extends Component{
            </div>
        ) : (
            <div className="center">
-               <img src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
+               <img alt="Sorry..Loading" src="https://i.imgur.com/T3Ht7S3.gif" width="120"></img>
            </div>
        )
     )

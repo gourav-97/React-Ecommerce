@@ -77,6 +77,12 @@ class Cart extends Component {
                 })
             }
             else{
+              // this.props.history.push({
+              //   pathname:"/error",
+              //   state:{
+              //     responseData: res.data.message
+              //   }
+              // })
                 window.location.reload();
                 alert(res.data.message);
             }
@@ -120,8 +126,14 @@ class Cart extends Component {
                 console.log("Data = "+res.data.responseData)
             }
             else{
-                window.location.reload();
-                alert(res.data.message);
+              this.props.history.push({
+                pathname:"/error",
+                state:{
+                  responseData: res.data.responseData
+                }
+              })
+                // window.location.reload();
+                // alert(res.data.message);
             }
          }).catch(error=>{
             console.log(error.response)
@@ -155,8 +167,14 @@ class Cart extends Component {
                 console.log("Data = "+res.data.responseData)
             }
             else{
-                window.location.reload();
-                alert(res.data.message);
+              this.props.history.push({
+                pathname:"/error",
+                state:{
+                  responseData: res.data.responseData
+                }
+              })
+                // window.location.reload();
+                // alert(res.data.message);
             }
          }).catch(error=>{
             console.log(error.response)

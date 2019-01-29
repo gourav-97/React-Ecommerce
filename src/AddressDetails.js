@@ -14,6 +14,25 @@ class AddressDetails  extends Component {
         pinCode:null,
         error_msg:''
   }
+
+    validateStreet = () => {
+        if(this.state.street.trim() === "" || this.state.street.trim() === null) {
+            return false;
+        } 
+        return true;
+    }
+    validateColony = () => {
+        if(this.state.colony.trim() === "" || this.state.colony.trim() === null) {
+            return false;
+        } 
+        return true;
+    }
+    validateCity = () => {
+        if(this.state.city.trim() === "" || this.state.city.trim() === null) {
+            return false;
+        } 
+        return true;
+    }
     
       handleChange=(e) => {
           const val=e.target.value
@@ -34,7 +53,24 @@ class AddressDetails  extends Component {
 
     handleSubmit =(e) => {
         e.preventDefault();
-        this.props.myCallBack(this.state);
+        if(!this.validateStreet()) {
+            this.setState({
+                error_msg: "Address details are invalid!"
+            });
+            return false;
+        } else if(!this.validateColony()) {
+            this.setState({
+                error_msg: "Address details are invalid!"
+            });
+            return false;
+        } else if(!this.validateCity()) {
+            this.setState({
+                error_msg: "Address details are invalid!"
+            });
+            return false;
+        } else {
+            this.props.myCallBack(this.state);
+        }
         // {this.validatePinCode()};
     }
 

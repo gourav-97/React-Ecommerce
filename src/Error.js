@@ -10,7 +10,7 @@ class Error extends Component {
          return (
             <div className="error-page">
                 <center><img alt="oops-msg" src="http://skweal-business.cloudapp.net/Content/images/big_oops.png" width="300" /></center>
-                <h2>{this.state.message}</h2>
+                <p align="center"><h3>{this.state.message}</h3></p>
             </div>
         )
     }

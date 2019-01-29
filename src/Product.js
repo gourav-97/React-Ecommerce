@@ -146,7 +146,7 @@ class Product extends Component {
                 <table>
                         <div className="row">
                             <div className="col s4">
-                                <img className="left pro-img" src={this.props.location.state.url} alt=""/> 
+                                <img className="left pro-img" src={this.props.location.state.url} alt=""/>
                             </div>
                             <div className="col s6 right">
                                 <div className="row">
